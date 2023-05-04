@@ -9,8 +9,8 @@ import BeforeFooterCTA from "../../sections/before-footer-cta/before-footer-cta-
 import FooterComponent from "../../sections/footer/footer-component";
 
 const HomePage = () => {
-	const HomePageDetails = [
-		{
+	const HomePageDetails = {
+		donate_blood: {
 			subheadingText: "Save Lives Today",
 			headingText: "Donate Blood with HemoCell",
 			classHint: "donate-blood-with-hemocell",
@@ -21,11 +21,11 @@ const HomePage = () => {
 			buttonLink: "/donate-blood",
 			buttonHave: true,
 		},
-		{
+		quote: {
 			classHint: "quote",
 			quoteText: `“The blood you donate gives someone another chance at life. One day that someone may be a close relative, a friend, a loved one—or even you.”`,
 		},
-		{
+		why_donate_blood: {
 			subheadingText: "Donate blood today",
 			headingText: "Why should you donate blood?",
 			classHint: "why-donate-blood",
@@ -40,7 +40,7 @@ const HomePage = () => {
 			buttonLink: "/donate-blood",
 			buttonHave: true,
 		},
-		{
+		eligiblity_criteria: {
 			subheadingText: "Are you ready?",
 			headingText: "Eligibility Criteria",
 			classHint: "eligibility-criteria",
@@ -57,18 +57,46 @@ const HomePage = () => {
 			buttonLink: "/donate-blood",
 			buttonHave: false,
 		},
+		hero: {
+			subheadingText: "Give the gift of life",
+			headingText: "Your Blood Can Make A Difference",
+		},
+	};
+
+	const stepDetails = [
+		{
+			key: "check-eligibility",
+			stepNumber: "01",
+			stepName: "Check your eligibility",
+			stepDescription:
+				"Confirm you meet the eligibility requirements to donate blood, such as age, weight, and overall health.",
+		},
+		{
+			key: "schedule-an-appointment",
+			stepNumber: "02",
+			stepName: "Schedule an appointment",
+			stepDescription:
+				"Schedule an appointment at a blood bank or blood drive near you.",
+		},
+		{
+			key: "donate-blood",
+			stepNumber: "03",
+			stepName: "Donate Blood",
+			stepDescription:
+				"Arrive at the appointment, fill out a questionnaire, and donate blood. The process takes about 10-15 minutes.",
+		},
 	];
 
 	return (
 		<>
 			<HeaderComponent />
-			<HeroComponent />
+			<HeroComponent {...HomePageDetails.hero} />
 			<TwoCtaComponent />
-			<ThreeStepProcessComponent />
-			<SideBySideComponent {...HomePageDetails[0]} />
-			<QuoteComponent {...HomePageDetails[1]} />
-			<SideBySideComponent {...HomePageDetails[2]} />
-			<CriteriaComponent {...HomePageDetails[3]} />
+			<ThreeStepProcessComponent stepDetails={stepDetails} />
+			<SideBySideComponent {...HomePageDetails.donate_blood} />
+			<QuoteComponent {...HomePageDetails.quote} />
+			<SideBySideComponent {...HomePageDetails.why_donate_blood} />
+			<CriteriaComponent {...HomePageDetails.eligiblity_criteria} />
 			<BeforeFooterCTA />
 			<FooterComponent />
 		</>
