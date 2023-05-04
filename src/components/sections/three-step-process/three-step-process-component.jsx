@@ -34,7 +34,7 @@ const ThreeStepProcessComponent = () => {
 					subheadingText={"Donation Process"}
 					headingText={"Step-by-Step Guide to Donating Blood"}
 				/>
-				<div className="process-steps-wrapper mt-10 grid grid-cols-[1fr_1fr_1fr]">
+				<div className="process-steps-wrapper mt-5 sm:mt-10 grid sm:grid-cols-[1fr_1fr_1fr]">
 					{stepDetails.map((stepDetail) => (
 						<ProcessStepComponent {...stepDetail} />
 					))}

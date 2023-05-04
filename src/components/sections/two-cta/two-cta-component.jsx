@@ -25,18 +25,18 @@ const TwoCtaComponent = () => {
 
 	return (
 		<WrapperSection>
-			<div className="cta-content-wrapper grid place-items-start grid-cols-[1fr_1fr] gap-[20px] w-full">
+			<div className="cta-content-wrapper grid place-items-start sm:grid-cols-[1fr_1fr] gap-[20px] w-full">
 				{ctaDetails.map((ctaDetail) => (
 					<a
 						href={ctaDetail.ctaLink}
 						key={ctaDetail.key}
-						className={`cta-col transition rounded-rmd overflow-hidden w-full relative z-[25] pt-[150px] pb-[50px] px-[50px] ${ctaDetail.ctaClass}`}
+						className={`cta-col transition rounded-rmd overflow-hidden w-full relative z-[25] pt-[150px] pb-[30px] sm:pb-[50px] px-[30px] sm:px-[50px] ${ctaDetail.ctaClass}`}
 					>
 						<div className="cta-col-content relative z-50">
-							<p className="cta-subheading not-italic font-medium text-md leading-normal tracking-[0.2em] uppercase text-white">
+							<p className="cta-subheading not-italic font-medium text-sm sm:text-md leading-normal tracking-[0.2em] uppercase text-white">
 								{ctaDetail.subheading}
 							</p>
-							<h2 className="cta-heading not-italic font-semibold text-[40px] leading-tight capitalize text-white">
+							<h2 className="cta-heading not-italic font-semibold text-[30px] sm:text-[40px] leading-tight capitalize text-white">
 								{ctaDetail.heading}
 							</h2>
 

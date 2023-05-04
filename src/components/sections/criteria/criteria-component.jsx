@@ -13,7 +13,7 @@ const CriteriaComponent = ({
 	return (
 		<WrapperSection>
 			<div
-				className={`${classHint} wrapper flex flex-col justify-center items-start w-full relative p-20 rounded-rmd z-[25] overflow-hidden`}
+				className={`${classHint} wrapper flex flex-col justify-center items-start w-full relative p-6 py-20 sm:p-20 rounded-rmd z-[25] overflow-hidden`}
 			>
 				<GroupedHeadingComponent
 					subheadingText={subheadingText}

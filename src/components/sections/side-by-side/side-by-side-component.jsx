@@ -17,13 +17,11 @@ const SideBySideComponent = ({
 }) => {
 	return (
 		<WrapperSection>
-			<div className="wrapper grid grid-cols-[1fr_1fr]">
+			<div className="wrapper grid grid-cols0-1 lg:grid-cols-2">
 				<div
-					className={`my-image-col rounded-rmd z-[25] overflow-hidden h-[600px] w-full ${classHint}`}
-				>
-					<img src={imageUrl} alt="" />
-				</div>
-				<div className="content-wrapper p-[50px] flex flex-col justify-center">
+					className={`my-image-col rounded-rmd z-[25] h-[400px] sm:h-[600px] w-full ${classHint}`}
+				></div>
+				<div className="content-wrapper p-[15px] py-[50px] sm:p-[50px] flex flex-col justify-center">
 					<GroupedHeadingComponent
 						subheadingText={subheadingText}
 						headingText={headingText}
