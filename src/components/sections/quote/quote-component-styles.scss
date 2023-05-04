@@ -1,0 +1,14 @@
+.quote-wrapper {
+	padding: 5rem;
+	position: relative;
+}
+
+.quote {
+	background: linear-gradient(
+			to right,
+			var(--dark_red) 0%,
+			var(--dark_red_overlay) 100%
+		),
+		url("../../../assets/images/blood-donation(6).jpg") center/cover
+			no-repeat;
+}

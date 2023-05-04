@@ -1,0 +1,76 @@
+// .two-cta-wrapper {
+// 	margin: 0 auto;
+
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	align-items: center;
+    
+// 	width: 100%;
+//     padding: 50px 10px;
+// }
+
+// .two-cta-container {
+// 	position: relative;
+// 	margin: 0 auto;
+// 	width: min(100% - 15px, 1250px);
+// 	padding: 10px;
+
+//     // outline: 1px solid red;
+// 	display: flex;
+// 	flex-direction: row;
+//     justify-content: center;
+// }
+
+// .cta-content-wrapper
+// {
+//     display: grid;
+//     place-items: start;
+//     grid-template-columns: 1fr 1fr;
+//     grid-gap: 30px;
+//     width: 100%;
+// }
+
+// .cta-col
+// {
+//     // outline: 1px solid red;
+//     padding: 150px 50px 50px 50px;
+//     width: 100%;
+//     position: relative;
+//     z-index: 25;
+// }
+.cta-col::before
+{
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, var(--dark_overlay), var(--dark));
+    opacity: .7;
+    z-index: 0;
+}
+.cta-col{
+    &:hover
+    {
+        &::before
+        {
+            background: linear-gradient(to bottom, var(--dark_overlay), var(--dark) 90%);
+            opacity: .8;
+        }
+    }
+}
+
+.cta-col-content
+{
+    position: relative;
+    z-index: 50;
+}
+
+.cta-col:nth-child(1)
+{
+    background: var(--dark) url('../../../assets/images/blood-donation(5).jpg') no-repeat center center;
+}
+.cta-col:nth-child(2)
+{
+    background: var(--dark) url('../../../assets/images/blood-donation(4).jpg') no-repeat center center;
+}
+
