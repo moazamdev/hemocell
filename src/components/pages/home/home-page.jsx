@@ -6,6 +6,7 @@ import SideBySideComponent from "../../sections/side-by-side/side-by-side-compon
 import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 import BeforeFooterCTA from "../../sections/before-footer-cta/before-footer-cta-components";
+import FooterComponent from "../../sections/footer/footer-component";
 
 const HomePage = () => {
 	const HomePageDetails = [
@@ -69,6 +70,7 @@ const HomePage = () => {
 			<SideBySideComponent {...HomePageDetails[2]} />
 			<CriteriaComponent {...HomePageDetails[3]} />
 			<BeforeFooterCTA />
+			<FooterComponent />
 		</>
 	);
 };
