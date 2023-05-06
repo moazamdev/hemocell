@@ -1,3 +1,4 @@
+import { useState } from "react";
 import HeroComponent from "../../sections/hero/hero-component";
 import ThreeStepProcessComponent from "../../sections/three-step-process/three-step-process-component";
 import SideBySideComponent from "../../sections/side-by-side/side-by-side-component";
@@ -5,6 +6,32 @@ import QuoteComponent from "../../sections/quote/quote-component";
 import FormComponent from "../../sections/form/form-component";
 
 const HostBloodDrivePage = () => {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		institute: "",
+		designation: "",
+		city: "",
+		message: "",
+	});
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		console.log(formData);
+
+		setFormData({
+			name: "",
+			email: "",
+			phone: "",
+			institute: "",
+			designation: "",
+			city: "",
+			message: "",
+		});
+	};
+
 	const HostBloodDrivePageDetails = {
 		quote: {
 			classHint: "quote host-drive-quote",
@@ -70,10 +97,62 @@ const HostBloodDrivePage = () => {
 		},
 	];
 
+	const fields = [
+		{
+			key: "name",
+			name: "name",
+			type: "text",
+			placeholder: "Name",
+			required: true,
+		},
+		{
+			key: "email",
+			name: "email",
+			type: "email",
+			placeholder: "Email",
+			required: true,
+		},
+		{
+			key: "phone",
+			name: "phone",
+			type: "tel",
+			placeholder: "Phone",
+			required: true,
+		},
+		{
+			key: "institute",
+			name: "institute",
+			type: "text",
+			placeholder: "Institute",
+			required: true,
+		},
+		{
+			key: "designation",
+			name: "designation",
+			type: "text",
+			placeholder: "Designation",
+			required: false,
+		},
+		{
+			key: "city",
+			name: "city",
+			type: "text",
+			placeholder: "City",
+			required: true,
+		},
+	];
+
 	return (
 		<>
 			<HeroComponent {...HostBloodDrivePageDetails.hero} />
-			<FormComponent />
+			<FormComponent
+				fields={fields}
+				heading={"Host a Blood Drive"}
+				buttonText={"Schedule Host"}
+				handleSubmit={handleSubmit}
+				formData={formData}
+				setFormData={setFormData}
+			/>
 			<ThreeStepProcessComponent
 				stepsText={HostBloodDrivePageDetails.stepsText}
 				stepDetails={stepDetails}

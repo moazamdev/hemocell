@@ -5,6 +5,26 @@ import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 
 const DonateBloodPage = () => {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		blood_type: "",
+	});
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		console.log(formData);
+
+		setFormData({
+			name: "",
+			email: "",
+			phone: "",
+			blood_type: "",
+		});
+	};
+
 	const DonateBloodPageDetails = {
 		quote: {
 			classHint: "quote",
@@ -77,9 +97,48 @@ const DonateBloodPage = () => {
 		},
 	];
 
+	const fields = [
+		{
+			key: "name",
+			name: "name",
+			type: "text",
+			placeholder: "Name",
+			required: true,
+		},
+		{
+			key: "email",
+			name: "email",
+			type: "email",
+			placeholder: "Email",
+			required: true,
+		},
+		{
+			key: "phone",
+			name: "phone",
+			type: "tel",
+			placeholder: "Phone",
+			required: true,
+		},
+		{
+			key: "blood-type",
+			name: "blood-type",
+			type: "text",
+			placeholder: "Blood Type",
+			required: true,
+		},
+	];
+
 	return (
 		<>
 			<HeroComponent {...DonateBloodPageDetails.hero} />
+			<FormComponent
+				fields={fields}
+				heading={"Schedule an Appointment"}
+				buttonText={"Schedule an Appointment"}
+				handleSubmit={handleSubmit}
+				formData={formData}
+				setFormData={setFormData}
+			/>
 			<ThreeStepProcessComponent
 				stepsText={DonateBloodPageDetails.stepsText}
 				stepDetails={stepDetails}

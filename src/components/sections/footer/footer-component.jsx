@@ -1,5 +1,7 @@
 // import "./footer-styles.scss";
 
+import { NavLink } from "react-router-dom";
+
 const FooterComponent = () => {
 	const exploreLinks = [
 		{
@@ -67,12 +69,12 @@ const FooterComponent = () => {
 						<ul className="flex flex-col gap-2">
 							{exploreLinks.map((link, index) => (
 								<li key={index}>
-									<a
+									<NavLink
 										className="not-italic font-medium text-[18px] leading-[34px] text-[#D9D9D9]"
-										href={link.link}
+										to={link.link}
 									>
 										{link.title}
-									</a>
+									</NavLink>
 								</li>
 							))}
 						</ul>
@@ -84,12 +86,12 @@ const FooterComponent = () => {
 						<ul className="flex flex-col gap-2">
 							{contactLinks.map((link, index) => (
 								<li key={index}>
-									<a
+									<NavLink
 										className="not-italic font-medium text-[18px] leading-[34px] text-[#D9D9D9]"
-										href={link.link}
+										to={link.link}
 									>
 										{link.title}
-									</a>
+									</NavLink>
 								</li>
 							))}
 						</ul>
