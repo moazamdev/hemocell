@@ -7,3 +7,24 @@
 		url("../../../assets/images/blood-donation(6).jpg") center/cover
 			no-repeat;
 }
+
+.host-drive-quote {
+	background: linear-gradient(
+			to right,
+			var(--dark_red) 0%,
+			var(--dark_red_overlay) 100%
+		),
+		url("../../../assets/images/blood-donation(4).jpg") center/cover
+			no-repeat;
+}
+
+.need-blood-quote
+{
+	background: linear-gradient(
+			to right,
+			var(--dark_red) 0%,
+			var(--dark_red_overlay) 100%
+		),
+		url("../../../assets/images/blood-donation(5).jpg") center/cover
+			no-repeat;
+}

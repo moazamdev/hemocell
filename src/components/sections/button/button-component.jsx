@@ -1,8 +1,4 @@
-const ButtonComponent = ({
-	buttonText,
-	buttonLink,
-	buttonType,
-}) => {
+const ButtonComponent = ({ buttonText, buttonLink, buttonType }) => {
 	return (
 		<button
 			className={`cta-btn 
@@ -10,7 +6,7 @@ const ButtonComponent = ({
             ${
 				buttonType === "fill"
 					? "border-dark_red text-white bg-dark_red hover:bg-dark hover:text-white"
-					: "border-off_white/[.5] text-white hover:bg-white hover:text-dark"
+					: "border-off_white/[.5] text-dark bg-white hover:bg-red hover:text-white hover:border-red"
 			}
             transition text-black px-8 py-3 text-sm w-fit font-medium`}
 		>

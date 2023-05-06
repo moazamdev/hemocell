@@ -1,26 +1,14 @@
 import HeroComponent from "../../sections/hero/hero-component";
-import TwoCtaComponent from "../../sections/two-cta/two-cta-component";
 import ThreeStepProcessComponent from "../../sections/three-step-process/three-step-process-component";
 import SideBySideComponent from "../../sections/side-by-side/side-by-side-component";
 import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 
-const HomePage = () => {
-	const HomePageDetails = {
-		donate_blood: {
-			subheadingText: "Save Lives Today",
-			headingText: "Donate Blood with HemoCell",
-			classHint: "donate-blood-with-hemocell",
-			paraText:
-				"Our mission is to create a community of donors who make a difference in the lives of others. We prioritize the safety and comfort of our donors and patients, and provide the highest quality of care to ensure an easy and convenient donation process. Join us in our life-saving mission.",
-			imageUrl: "../../../assets/images/blood-donation(1).jpg",
-			buttonText: "Donate Now",
-			buttonLink: "/donate-blood",
-			buttonHave: true,
-		},
+const DonateBloodPage = () => {
+	const DonateBloodPageDetails = {
 		quote: {
 			classHint: "quote",
-			quoteText: `“The blood you donate gives someone another chance at life. One day that someone may be a close relative, a friend, a loved one—or even you.”`,
+			quoteText: `“By donating money, you provide nourishment. By donating blood, you give the gift of life. Join us in this noble cause today!”`,
 		},
 		why_donate_blood: {
 			subheadingText: "Donate blood today",
@@ -55,9 +43,9 @@ const HomePage = () => {
 			buttonHave: false,
 		},
 		hero: {
-			subheadingText: "Give the gift of life",
-			headingText: "Your Blood Can Make A Difference",
-			classHint: "home-page-hero",
+			subheadingText: "Donate Blood",
+			headingText: "Save life by donating blood today",
+			classHint: "donate-blood-page-hero",
 		},
 		stepsText: {
 			subheadingText: "Donation Process",
@@ -91,18 +79,18 @@ const HomePage = () => {
 
 	return (
 		<>
-			<HeroComponent {...HomePageDetails.hero} />
-			<TwoCtaComponent />
+			<HeroComponent {...DonateBloodPageDetails.hero} />
 			<ThreeStepProcessComponent
-				stepsText={HomePageDetails.stepsText}
+				stepsText={DonateBloodPageDetails.stepsText}
 				stepDetails={stepDetails}
 			/>
-			<SideBySideComponent {...HomePageDetails.donate_blood} />
-			<QuoteComponent {...HomePageDetails.quote} />
-			<SideBySideComponent {...HomePageDetails.why_donate_blood} />
-			<CriteriaComponent {...HomePageDetails.eligiblity_criteria} />
+			<CriteriaComponent
+				{...DonateBloodPageDetails.eligiblity_criteria}
+			/>
+			<SideBySideComponent {...DonateBloodPageDetails.why_donate_blood} />
+			<QuoteComponent {...DonateBloodPageDetails.quote} />
 		</>
 	);
 };
 
-export default HomePage;
+export default DonateBloodPage;

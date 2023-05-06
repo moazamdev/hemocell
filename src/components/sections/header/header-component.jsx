@@ -2,11 +2,13 @@ import { useState } from "react";
 
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link, NavLink } from "react-router-dom";
 
 const navigation = [
 	{ name: "Home", href: "/" },
 	{ name: "Host Blood Drive", href: "/host-blood-drive" },
 	{ name: "Donate Money", href: "https://donorbox.org/donate-money-11" },
+	{ name: "Help Needed", href: "/contact" },
 	{ name: "Need Blood", href: "/need-blood" },
 	{ name: "Donate Blood", href: "/donate-blood" },
 ];
@@ -26,7 +28,11 @@ const HeaderComponent = () => {
 				<div className="flex lg:flex-1">
 					<a href="#" className="-m-1.5 p-1.5">
 						<span className="sr-only">{compnayName}</span>
-						<img className="h-10 w-auto" src={logoUrlWhite} alt="" />
+						<img
+							className="h-10 w-auto"
+							src={logoUrlWhite}
+							alt=""
+						/>
 					</a>
 				</div>
 
@@ -43,15 +49,16 @@ const HeaderComponent = () => {
 				</div>
 
 				{/* Desktop navigation */}
-				<div className="hidden lg:flex lg:gap-x-12">
+				<div className="hidden lg:flex lg:gap-x-12 nth">
 					{navigation.map((item) => (
-						<a
+						<NavLink
 							key={item.name}
-							href={item.href}
+							onClick={() => setMobileMenuOpen(false)}
+							to={item.href}
 							className="text-sm font-medium leading-6 text-off_white"
 						>
 							{item.name}
-						</a>
+						</NavLink>
 					))}
 				</div>
 			</nav>
@@ -83,13 +90,14 @@ const HeaderComponent = () => {
 						<div className="-my-6 divide-y divide-gray-500/10">
 							<div className="space-y-2 py-6">
 								{navigation.map((item) => (
-									<a
+									<NavLink
 										key={item.name}
-										href={item.href}
+										onClick={() => setMobileMenuOpen(false)}
+										to={item.href}
 										className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 									>
 										{item.name}
-									</a>
+									</NavLink>
 								))}
 							</div>
 						</div>
@@ -98,6 +106,6 @@ const HeaderComponent = () => {
 			</Dialog>
 		</header>
 	);
-}
+};
 
 export default HeaderComponent;

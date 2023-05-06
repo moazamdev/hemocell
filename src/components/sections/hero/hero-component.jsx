@@ -1,8 +1,8 @@
 import "./hero-component-styles.scss";
 
-const HeroComponent = ({ subheadingText, headingText }) => {
+const HeroComponent = ({ subheadingText, headingText, classHint }) => {
 	return (
-		<section className="main-wrapper">
+		<section className={`main-wrapper ${classHint}`}>
 			<div className="main-container">
 				<div className="text-wrapper sm:w-[650px] flex flex-col justify-center items-center">
 					<h3 className="subheading relative font-bold sm:text-[20px] leading-[2em] text-center tracking-[0.3em] uppercase text-off_white">

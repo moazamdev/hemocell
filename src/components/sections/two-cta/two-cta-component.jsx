@@ -19,7 +19,7 @@ const TwoCtaComponent = () => {
 			subheading: "Urgent need for blood",
 			heading: "Request for blood donation",
 			btnText: "Request blood",
-			ctaLink: "/request-blood",
+			ctaLink: "/need-blood",
 		},
 	];
 
