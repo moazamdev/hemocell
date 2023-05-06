@@ -1,9 +1,32 @@
+import { useState } from "react";
 import HeroComponent from "../../sections/hero/hero-component";
 import ThreeStepProcessComponent from "../../sections/three-step-process/three-step-process-component";
 import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
+import FormComponent from "../../sections/form/form-component";
 
 const NeedBloodPage = () => {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		blood_type: "",
+	});
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		console.log(formData);
+
+		setFormData({
+			name: "",
+			email: "",
+			phone: "",
+			blood_type: "",
+			message: "",
+		});
+	};
+
 	const NeedBloodPageDetails = {
 		quote: {
 			classHint: "quote need-blood-quote",
@@ -64,10 +87,49 @@ const NeedBloodPage = () => {
 		},
 	];
 
+	const fields = [
+		{
+			key: "name",
+			name: "name",
+			type: "text",
+			placeholder: "Name",
+			required: true,
+		},
+		{
+			key: "email",
+			name: "email",
+			type: "email",
+			placeholder: "Email",
+			required: true,
+		},
+		{
+			key: "phone",
+			name: "phone",
+			type: "tel",
+			placeholder: "Phone",
+			required: true,
+		},
+		{
+			key: "blood-type",
+			name: "blood-type",
+			type: "text",
+			placeholder: "Blood Type",
+			required: false,
+		},
+	];
+
 	return (
 		<>
 			<HeroComponent {...NeedBloodPageDetails.hero} />
-            <QuoteComponent {...NeedBloodPageDetails.quote} />
+			<FormComponent
+				fields={fields}
+				heading={"Request for emergency blood"}
+				buttonText={"Request blood"}
+				handleSubmit={handleSubmit}
+				formData={formData}
+				setFormData={setFormData}
+			/>
+			<QuoteComponent {...NeedBloodPageDetails.quote} />
 			<ThreeStepProcessComponent
 				stepsText={NeedBloodPageDetails.stepsText}
 				stepDetails={stepDetails}

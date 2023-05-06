@@ -1,8 +1,10 @@
+import { useState } from "react";
 import HeroComponent from "../../sections/hero/hero-component";
 import ThreeStepProcessComponent from "../../sections/three-step-process/three-step-process-component";
 import SideBySideComponent from "../../sections/side-by-side/side-by-side-component";
 import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
+import FormComponent from "../../sections/form/form-component";
 
 const DonateBloodPage = () => {
 	const [formData, setFormData] = useState({
@@ -22,6 +24,7 @@ const DonateBloodPage = () => {
 			email: "",
 			phone: "",
 			blood_type: "",
+			message: "",
 		});
 	};
 
@@ -124,7 +127,7 @@ const DonateBloodPage = () => {
 			name: "blood-type",
 			type: "text",
 			placeholder: "Blood Type",
-			required: true,
+			required: false,
 		},
 	];
 
