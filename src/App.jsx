@@ -14,12 +14,12 @@ export default function App() {
 			<HeaderComponent />
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-				<Route path="/donate-blood" element={<DonateBloodPage />} />
-				<Route path="/need-blood" element={<NeedBloodPage />} />
 				<Route
 					path="/host-blood-drive"
 					element={<HostBloodDrivePage />}
 				/>
+				<Route path="/donate-blood" element={<DonateBloodPage />} />
+				<Route path="/need-blood" element={<NeedBloodPage />} />
 				<Route
 					path="/contact"
 					element={<ContactPage />}

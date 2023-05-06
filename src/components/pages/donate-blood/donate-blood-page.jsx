@@ -13,7 +13,7 @@ const DonateBloodPage = () => {
 		why_donate_blood: {
 			subheadingText: "Donate blood today",
 			headingText: "Why should you donate blood?",
-			classHint: "why-donate-blood",
+			classHint: "side-col-image why-donate-blood",
 			paraText: `Donating blood is a selfless act that has the power to save lives. Here are a few reasons why you should consider donating blood:
 			\n― You could help save up to three lives with just one donation.
 			― Blood is always needed in emergency situations, such as natural disasters and accidents.
@@ -28,7 +28,7 @@ const DonateBloodPage = () => {
 		eligiblity_criteria: {
 			subheadingText: "Are you ready?",
 			headingText: "Eligibility Criteria",
-			classHint: "eligibility-criteria",
+			classHint: "side-col-image eligibility-criteria",
 			paraText: [
 				`18-50 years, above 50 Kg.`,
 				`Normal temperature, pulse and blood pressure.`,

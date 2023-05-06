@@ -2,6 +2,7 @@ import HeroComponent from "../../sections/hero/hero-component";
 import ThreeStepProcessComponent from "../../sections/three-step-process/three-step-process-component";
 import SideBySideComponent from "../../sections/side-by-side/side-by-side-component";
 import QuoteComponent from "../../sections/quote/quote-component";
+import FormComponent from "../../sections/form/form-component";
 
 const HostBloodDrivePage = () => {
 	const HostBloodDrivePageDetails = {
@@ -12,7 +13,7 @@ const HostBloodDrivePage = () => {
 		benefits_host_drive: {
 			subheadingText: "Being a Hero",
 			headingText: "Benefits of Hosting a Blood Drive",
-			classHint: "benefits-host-drive",
+			classHint: "side-col-image benefits-host-drive",
 			paraText: `Hosting a blood drive is a great way to give back to your community and help save lives.
 			By providing a convenient location for people to donate, you can help ensure that there is a steady supply of blood for those in need.
 			Blood drives also provide an opportunity for team building and community involvement, and can boost morale and engagement among employees or group members.`,
@@ -25,7 +26,7 @@ const HostBloodDrivePage = () => {
 		hosting_blood_drive: {
 			subheadingText: "",
 			headingText: "Hosting the Blood Drive",
-			classHint: "hosting-blood-drive",
+			classHint: "side-col-image hosting-blood-drive",
 			paraText: `On the day of the blood drive, it's important to ensure that everything runs smoothly and that donors have a positive experience.
 			Make sure you have enough volunteers to help with registration, refreshments, and donor follow-up.
 			Provide a comfortable and welcoming environment for donors, and ensure that all equipment is properly sanitized and maintained.`,
@@ -72,6 +73,7 @@ const HostBloodDrivePage = () => {
 	return (
 		<>
 			<HeroComponent {...HostBloodDrivePageDetails.hero} />
+			<FormComponent />
 			<ThreeStepProcessComponent
 				stepsText={HostBloodDrivePageDetails.stepsText}
 				stepDetails={stepDetails}

@@ -10,7 +10,7 @@ const HomePage = () => {
 		donate_blood: {
 			subheadingText: "Save Lives Today",
 			headingText: "Donate Blood with HemoCell",
-			classHint: "donate-blood-with-hemocell",
+			classHint: "side-col-image donate-blood-with-hemocell",
 			paraText:
 				"Our mission is to create a community of donors who make a difference in the lives of others. We prioritize the safety and comfort of our donors and patients, and provide the highest quality of care to ensure an easy and convenient donation process. Join us in our life-saving mission.",
 			imageUrl: "../../../assets/images/blood-donation(1).jpg",
@@ -25,7 +25,7 @@ const HomePage = () => {
 		why_donate_blood: {
 			subheadingText: "Donate blood today",
 			headingText: "Why should you donate blood?",
-			classHint: "why-donate-blood",
+			classHint: "side-col-image why-donate-blood",
 			paraText: `Donating blood is a selfless act that has the power to save lives. Here are a few reasons why you should consider donating blood:
 			\n― You could help save up to three lives with just one donation.
 			― Blood is always needed in emergency situations, such as natural disasters and accidents.
@@ -40,7 +40,7 @@ const HomePage = () => {
 		eligiblity_criteria: {
 			subheadingText: "Are you ready?",
 			headingText: "Eligibility Criteria",
-			classHint: "eligibility-criteria",
+			classHint: "side-col-image eligibility-criteria",
 			paraText: [
 				`18-50 years, above 50 Kg.`,
 				`Normal temperature, pulse and blood pressure.`,

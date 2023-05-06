@@ -2,7 +2,19 @@
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		extend: {},
+		extend: {
+			// animation: {
+			// 	fade: "fade 1s ease-in-out forward",
+			// },
+			// keyframes: {
+			// 	fade: {
+			// 		// "0%": { transform: "translateY(5px)", opacity: "0" },
+			// 		// "100%": { transform: "translateY(0px)", opacity: "1" },
+			// 		"0%": { transform: "translateY(50px)" },
+			// 		"100%": { transform: "translateY(0px)" },
+			// 	},
+			// },
+		},
 		fontFamily: {
 			sans: ["manrope", "system-ui"],
 			serif: ["Arapey", "serif"],

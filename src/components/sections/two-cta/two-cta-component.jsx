@@ -30,7 +30,7 @@ const TwoCtaComponent = () => {
 					<a
 						href={ctaDetail.ctaLink}
 						key={ctaDetail.key}
-						className={`cta-col transition rounded-rmd overflow-hidden w-full relative z-[25] pt-[150px] pb-[30px] sm:pb-[50px] px-[30px] sm:px-[50px] ${ctaDetail.ctaClass}`}
+						className={`cta-col sm:before:transition rounded-rmd overflow-hidden w-full relative z-[25] pt-[150px] pb-[30px] sm:pb-[50px] px-[30px] sm:px-[50px] ${ctaDetail.ctaClass}`}
 					>
 						<div className="cta-col-content relative z-50">
 							<p className="cta-subheading not-italic font-medium text-sm sm:text-md leading-normal tracking-[0.2em] uppercase text-white">

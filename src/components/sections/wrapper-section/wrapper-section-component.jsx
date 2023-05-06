@@ -1,3 +1,5 @@
+import "./wrapper-section-styles.scss";
+
 const WrapperSection = ({ children }) => {
 	return (
 		<section className="two-cta-wrapper flex flex-col justify-center items-center w-full mx-auto my-0 px-2.5 py-[20px] md:py-[50px]">

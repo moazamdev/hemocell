@@ -18,8 +18,7 @@
 	background: var(--dark) url("../../../assets/images/blood-donation(3).jpg")
 		no-repeat center;
 }
-.contact-page-hero
-{
+.contact-page-hero {
 	background: var(--dark) url("../../../assets/images/blood-donation(4).jpg")
 		no-repeat center;
 }
@@ -57,4 +56,17 @@
 	position: relative;
 	margin: 0 auto;
 	width: min(100% - 20px, 1250px);
+}
+
+.main-container {
+	animation: fadeup 1s ease-in-out forwards;
+	transform: translateY(50px);
+	opacity: 0;
+}
+
+@keyframes fadeup {
+	to {
+		transform: translateY(0px);
+		opacity: 1;
+	}
 }

@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const ButtonComponent = ({ buttonText, buttonLink, buttonType }) => {
 	return (
 		<button
@@ -8,9 +10,9 @@ const ButtonComponent = ({ buttonText, buttonLink, buttonType }) => {
 					? "border-dark_red text-white bg-dark_red hover:bg-dark hover:text-white"
 					: "border-off_white/[.5] text-dark bg-white hover:bg-red hover:text-white hover:border-red"
 			}
-            transition text-black px-8 py-3 text-sm w-fit font-medium`}
+            transition text-black px-8 py-3 text-sm w-fit font-bold`}
 		>
-			<a href={buttonLink}>{buttonText}</a>
+			<NavLink to={buttonLink}>{buttonText}</NavLink>
 		</button>
 	);
 };

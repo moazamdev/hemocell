@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
 	--dark: #161a1b;
 	--dark_overlay: #161a1b56;

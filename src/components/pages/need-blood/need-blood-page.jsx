@@ -1,6 +1,5 @@
 import HeroComponent from "../../sections/hero/hero-component";
 import ThreeStepProcessComponent from "../../sections/three-step-process/three-step-process-component";
-import SideBySideComponent from "../../sections/side-by-side/side-by-side-component";
 import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 
@@ -76,7 +75,6 @@ const NeedBloodPage = () => {
 			<CriteriaComponent
 				{...NeedBloodPageDetails.tips_for_managing_blood_loss}
 			/>
-			{/* <SideBySideComponent {...NeedBloodPageDetails.why_donate_blood} /> */}
 		</>
 	);
 };
