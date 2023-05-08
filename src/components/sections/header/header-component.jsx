@@ -12,8 +12,8 @@ const navigation = [
 	{ name: "Need Blood", href: "/need-blood", secondLast: true },
 	{ name: "Donate Blood", href: "/donate-blood", last: true },
 ];
-const logoUrl = "../src/assets/logos/HemoCell-Logo-Black.png";
-const logoUrlWhite = "../src/assets/logos/HemoCell-Logo-White.png";
+const logoUrl = "../src/assets/logos/HemoCell Logo black.png";
+const logoUrlWhite = "../src/assets/logos/HemoCell Logo White.png";
 const compnayName = "HemoCell Blood Bank";
 
 const HeaderComponent = () => {
