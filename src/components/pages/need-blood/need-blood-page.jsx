@@ -4,6 +4,7 @@ import ThreeStepProcessComponent from "../../sections/three-step-process/three-s
 import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 import FormComponent from "../../sections/form/form-component";
+import SearchBloodStockComponent from "../../sections/search-blood-stock/search-blood-stock-component";
 
 const NeedBloodPage = () => {
 	const [formData, setFormData] = useState({
@@ -60,6 +61,11 @@ const NeedBloodPage = () => {
 		stepsText: {
 			subheadingText: "Collecting Blood",
 			headingText: "From start to finish, here's what to expect.",
+		},
+		bloodStock: {
+			subheadingText: "When you need it",
+			headingText: "Find Available Blood Stock",
+			classHint: "search-blood-stock",
 		},
 	};
 
@@ -130,6 +136,7 @@ const NeedBloodPage = () => {
 				setFormData={setFormData}
 			/>
 			<QuoteComponent {...NeedBloodPageDetails.quote} />
+			<SearchBloodStockComponent {...NeedBloodPageDetails.bloodStock} />
 			<ThreeStepProcessComponent
 				stepsText={NeedBloodPageDetails.stepsText}
 				stepDetails={stepDetails}
