@@ -1,6 +1,10 @@
 import { useState } from "react";
 import HeroComponent from "../../sections/hero/hero-component";
 import FormComponent from "../../sections/form/form-component";
+import ContactDetailsComponent from "../../sections/details/details-component";
+
+import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const ContactPage = () => {
 	const [formData, setFormData] = useState({
@@ -63,28 +67,29 @@ const ContactPage = () => {
 		},
 	];
 
-	// const stepDetails = [
-	// 	{
-	// 		key: "promote-widely",
-	// 		stepNumber: "01",
-	// 		stepName: "Promote Widely",
-	// 		stepDescription:
-	// 			"Use social media, flyers, and emails to spread the word.",
-	// 	},
-	// 	{
-	// 		key: "emphasize-benefits",
-	// 		stepNumber: "02",
-	// 		stepName: "Emphasize Benefits",
-	// 		stepDescription: "Highlight the positive impact donors can make.",
-	// 	},
-	// 	{
-	// 		key: "varity-of-channels",
-	// 		stepNumber: "03",
-	// 		stepName: "Variety of Channels",
-	// 		stepDescription:
-	// 			"Use multiple marketing channels to reach potential donors.",
-	// 	},
-	// ];
+	const contactDetails = [
+		{
+			key: "phone",
+			stepNumber: <FaPhoneAlt />,
+			stepName: "Phone",
+			stepDescription: "(+92)-333-123-4567",
+			stepUrl: "tel:+923331234567",
+		},
+		{
+			key: "email",
+			stepNumber: <MdEmail />,
+			stepName: "Email",
+			stepDescription: "help@hemocell.com",
+			stepUrl: "mailto:help@hemocell.com",
+		},
+		{
+			key: "address",
+			stepNumber: <FaMapMarkerAlt />,
+			stepName: "Address",
+			stepDescription: "Karachi, Sindh, Pakistan",
+			stepUrl: "https://goo.gl/maps/sszR4K9aDKuYfy2Y8",
+		},
+	];
 
 	return (
 		<>
@@ -97,6 +102,7 @@ const ContactPage = () => {
 				formData={formData}
 				setFormData={setFormData}
 			/>
+			<ContactDetailsComponent contactDetails={contactDetails} />
 		</>
 	);
 };
