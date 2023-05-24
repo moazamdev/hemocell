@@ -5,13 +5,14 @@ import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 import FormComponent from "../../sections/form/form-component";
 import SearchBloodStockComponent from "../../sections/search-blood-stock/search-blood-stock-component";
+import Axios from "axios";
 
 const NeedBloodPage = () => {
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
 		phone: "",
-		blood_type: "",
+		bloodType: "",
 	});
 
 	const handleSubmit = (e) => {
@@ -19,11 +20,26 @@ const NeedBloodPage = () => {
 
 		console.log(formData);
 
+		Axios.post("http://localhost:3001/create-need-blood", {
+			name: formData.name,
+			email: formData.email,
+			phone: formData.phone,
+			bloodType: formData.bloodType,
+			message: formData.message,
+		})
+			.then((response) => {
+				console.log("success");
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+
 		setFormData({
 			name: "",
 			email: "",
 			phone: "",
-			blood_type: "",
+			bloodType: "",
 			message: "",
 		});
 	};
@@ -116,8 +132,8 @@ const NeedBloodPage = () => {
 			required: true,
 		},
 		{
-			key: "blood-type",
-			name: "blood-type",
+			key: "bloodType",
+			name: "bloodType",
 			type: "text",
 			placeholder: "Blood Type",
 			required: false,

@@ -5,25 +5,47 @@ import SideBySideComponent from "../../sections/side-by-side/side-by-side-compon
 import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 import FormComponent from "../../sections/form/form-component";
+import Axios from "axios";
 
 const DonateBloodPage = () => {
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
 		phone: "",
-		blood_type: "",
+		bloodType: "",
+		message: "",
 	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		console.log(formData);
+		// check if any field is empty then return from here
+		// if (!formData.name || !formData.email || !formData.phone) {
+		// 	return;
+		// }
+
+		console.log("success");
+
+		Axios.post("http://localhost:3001/create-donate-blood", {
+			name: formData.name,
+			email: formData.email,
+			phone: formData.phone,
+			bloodType: formData.bloodType,
+			message: formData.message,
+		})
+			.then((response) => {
+				console.log("success");
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 
 		setFormData({
 			name: "",
 			email: "",
 			phone: "",
-			blood_type: "",
+			bloodType: "",
 			message: "",
 		});
 	};
@@ -118,16 +140,16 @@ const DonateBloodPage = () => {
 		{
 			key: "phone",
 			name: "phone",
-			type: "tel",
+			type: "text",
 			placeholder: "Phone",
 			required: true,
 		},
 		{
-			key: "blood-type",
-			name: "blood-type",
+			key: "bloodType",
+			name: "bloodType",
 			type: "text",
 			placeholder: "Blood Type",
-			required: false,
+			required: true,
 		},
 	];
 

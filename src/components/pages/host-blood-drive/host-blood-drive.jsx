@@ -4,6 +4,7 @@ import ThreeStepProcessComponent from "../../sections/three-step-process/three-s
 import SideBySideComponent from "../../sections/side-by-side/side-by-side-component";
 import QuoteComponent from "../../sections/quote/quote-component";
 import FormComponent from "../../sections/form/form-component";
+import Axios from "axios";
 
 const HostBloodDrivePage = () => {
 	const [formData, setFormData] = useState({
@@ -20,6 +21,23 @@ const HostBloodDrivePage = () => {
 		e.preventDefault();
 
 		console.log(formData);
+
+		Axios.post("http://localhost:3001/create-host-blood-drive", {
+			name: formData.name,
+			email: formData.email,
+			phone: formData.phone,
+			institute: formData.institute,
+			designation: formData.designation,
+			city: formData.city,
+			message: formData.message,
+		})
+			.then((response) => {
+				console.log("success");
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 
 		setFormData({
 			name: "",

@@ -21,18 +21,15 @@ const FormComponent = ({
 					{heading}
 				</h3>
 				{status === "Submited" ? (
-					<p className="text-center text-lime-500 text-sm sm:text-base mt-5">
+					<p className="text-center text-white text-sm sm:text-base mt-5">
 						Thank you for contacting HemoCell. We will get back to
 						you as soon as possible.
 					</p>
 				) : (
 					<form
 						className="contact-form grid grid-cols-1 sm:grid-cols-2 gap-5 w-full relative sm:p-6 py-8 sm:p-10 rounded-rmd z-[25] overflow-hidden"
-						method="POST"
-						onSubmit={() => {
-							setStatus("Submited");
-							handleSubmit;
-						}}
+						// method="POST"
+						onSubmit={handleSubmit}
 					>
 						{fields.map((field, index) => (
 							<input
@@ -43,7 +40,7 @@ const FormComponent = ({
 									})
 								}
 								value={formData[field.name]}
-								key={index}
+								key={field.key}
 								type={field.type}
 								name={field.name}
 								id={field.name}
@@ -70,13 +67,31 @@ const FormComponent = ({
 							/>
 						</div>
 						<div className="grid place-items-center sm:col-span-2 gap-5 mb-5 w-full">
-							<input
+							<button
 								type="submit"
 								name="submit"
-								id="submit"
+								onClick={(e) => {
+									handleSubmit(e);
+									setStatus("Submited");
+								}}
 								className={` rounded-rsm border border-white hover:border-red text-dark bg-white hover:bg-red hover:text-white transition px-10 py-4 text-sm w-fit font-bold w-fit cursor-pointer`}
-								value={buttonText}
-							/>
+							>
+								{buttonText}
+							</button>
+							{/* <button
+								className={` rounded-rsm border border-white hover:border-red text-dark bg-white hover:bg-red hover:text-white transition px-10 py-4 text-sm w-fit font-bold w-fit cursor-pointer`}
+								// onClick={() => {
+								// 	handleSubmit;
+								// 	setStatus("Submited");
+								// }}
+								type="submit"
+								onClick={(e) => {
+									handleSubmit(e);
+									setStatus("Submited");
+								}}
+							>
+								{buttonText}
+							</button> */}
 						</div>
 					</form>
 				)}
