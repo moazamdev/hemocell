@@ -13,6 +13,7 @@ const NeedBloodPage = () => {
 		email: "",
 		phone: "",
 		bloodType: "",
+		message: "",
 	});
 
 	const handleSubmit = (e) => {

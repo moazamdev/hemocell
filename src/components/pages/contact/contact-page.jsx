@@ -2,6 +2,7 @@ import { useState } from "react";
 import HeroComponent from "../../sections/hero/hero-component";
 import FormComponent from "../../sections/form/form-component";
 import ContactDetailsComponent from "../../sections/details/details-component";
+import Axios from "axios";
 
 import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -11,7 +12,8 @@ const ContactPage = () => {
 		name: "",
 		email: "",
 		phone: "",
-		blood_type: "",
+		reason: "",
+		message: "",
 	});
 
 	const handleSubmit = (e) => {
@@ -19,11 +21,27 @@ const ContactPage = () => {
 
 		console.log(formData);
 
+		Axios.post("http://localhost:3001/create-need-help", {
+			name: formData.name,
+			email: formData.email,
+			phone: formData.phone,
+			reason: formData.reason,
+			message: formData.message,
+		})
+			.then((response) => {
+				console.log("success");
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+
+
 		setFormData({
 			name: "",
 			email: "",
 			phone: "",
-			blood_type: "",
+			reason: "",
 			message: "",
 		});
 	};
@@ -96,7 +114,7 @@ const ContactPage = () => {
 			<HeroComponent {...ContactPageDetails.hero} />
 			<FormComponent
 				fields={fields}
-				heading={"We’re to help"}
+				heading={"We're to help"}
 				buttonText={"Send Message"}
 				handleSubmit={handleSubmit}
 				formData={formData}
