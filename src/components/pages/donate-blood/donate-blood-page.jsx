@@ -5,6 +5,11 @@ import SideBySideComponent from "../../sections/side-by-side/side-by-side-compon
 import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 import FormComponent from "../../sections/form/form-component";
+
+import HeaderComponent from "../../sections/header/header-component";
+import BeforeFooterCTA from "../../sections/before-footer-cta/before-footer-cta-components";
+import FooterComponent from "../../sections/footer/footer-component";
+
 import Axios from "axios";
 
 const DonateBloodPage = () => {
@@ -155,6 +160,8 @@ const DonateBloodPage = () => {
 
 	return (
 		<>
+			<HeaderComponent />
+
 			<HeroComponent {...DonateBloodPageDetails.hero} />
 			<FormComponent
 				fields={fields}
@@ -173,6 +180,8 @@ const DonateBloodPage = () => {
 			/>
 			<SideBySideComponent {...DonateBloodPageDetails.why_donate_blood} />
 			<QuoteComponent {...DonateBloodPageDetails.quote} />
+			<BeforeFooterCTA />
+			<FooterComponent />
 		</>
 	);
 };

@@ -2,19 +2,7 @@
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		extend: {
-			// animation: {
-			// 	fade: "fade 1s ease-in-out forward",
-			// },
-			// keyframes: {
-			// 	fade: {
-			// 		// "0%": { transform: "translateY(5px)", opacity: "0" },
-			// 		// "100%": { transform: "translateY(0px)", opacity: "1" },
-			// 		"0%": { transform: "translateY(50px)" },
-			// 		"100%": { transform: "translateY(0px)" },
-			// 	},
-			// },
-		},
+		extend: {},
 		fontFamily: {
 			sans: ["manrope", "system-ui"],
 			serif: ["Arapey", "serif"],
@@ -26,6 +14,8 @@ export default {
 			red: "#400606",
 			off_white: "#F2F2F2",
 			white: "#FFFFFF",
+			gray: "#999999",
+			dark_gray: "#444444",
 		},
 		borderRadius: {
 			full: "999px",
@@ -33,10 +23,7 @@ export default {
 			rmd: "10px",
 			rlg: "15px",
 		},
-		backgroundImage: {
-			// "col-image":
-			// 	"url('../client/src/assets/images/blood-donation(5).jpg')",
-		},
+		backgroundImage: {},
 	},
 	plugins: [],
 };

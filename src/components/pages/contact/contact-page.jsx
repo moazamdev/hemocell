@@ -2,6 +2,10 @@ import { useState } from "react";
 import HeroComponent from "../../sections/hero/hero-component";
 import FormComponent from "../../sections/form/form-component";
 import ContactDetailsComponent from "../../sections/details/details-component";
+import HeaderComponent from "../../sections/header/header-component";
+import BeforeFooterCTA from "../../sections/before-footer-cta/before-footer-cta-components";
+import FooterComponent from "../../sections/footer/footer-component";
+
 import Axios from "axios";
 
 import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
@@ -35,7 +39,6 @@ const ContactPage = () => {
 			.catch((error) => {
 				console.log(error);
 			});
-
 
 		setFormData({
 			name: "",
@@ -111,6 +114,8 @@ const ContactPage = () => {
 
 	return (
 		<>
+			<HeaderComponent />
+
 			<HeroComponent {...ContactPageDetails.hero} />
 			<FormComponent
 				fields={fields}
@@ -121,6 +126,8 @@ const ContactPage = () => {
 				setFormData={setFormData}
 			/>
 			<ContactDetailsComponent contactDetails={contactDetails} />
+			<BeforeFooterCTA />
+			<FooterComponent />
 		</>
 	);
 };

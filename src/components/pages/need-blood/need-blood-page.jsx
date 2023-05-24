@@ -5,6 +5,10 @@ import QuoteComponent from "../../sections/quote/quote-component";
 import CriteriaComponent from "../../sections/criteria/criteria-component";
 import FormComponent from "../../sections/form/form-component";
 import SearchBloodStockComponent from "../../sections/search-blood-stock/search-blood-stock-component";
+import HeaderComponent from "../../sections/header/header-component";
+import BeforeFooterCTA from "../../sections/before-footer-cta/before-footer-cta-components";
+import FooterComponent from "../../sections/footer/footer-component";
+
 import Axios from "axios";
 
 const NeedBloodPage = () => {
@@ -143,6 +147,8 @@ const NeedBloodPage = () => {
 
 	return (
 		<>
+			<HeaderComponent />
+
 			<HeroComponent {...NeedBloodPageDetails.hero} />
 			<FormComponent
 				fields={fields}
@@ -161,6 +167,8 @@ const NeedBloodPage = () => {
 			<CriteriaComponent
 				{...NeedBloodPageDetails.tips_for_managing_blood_loss}
 			/>
+			<BeforeFooterCTA />
+			<FooterComponent />
 		</>
 	);
 };
