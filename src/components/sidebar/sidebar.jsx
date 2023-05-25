@@ -82,12 +82,12 @@ export default function Sidebar() {
 									className={
 										"text-[16px] py-3 font-bold block " +
 										(window.location.href.indexOf(
-											"/admin/dashboard"
+											"/admin"
 										) !== -1
 											? "text-red hover:text-lightBlue-600"
 											: "text-dark_gray hover:text-blueGray-500")
 									}
-									to="/admin/dashboard"
+									to="/admin"
 								>
 									Dashboard
 								</Link>

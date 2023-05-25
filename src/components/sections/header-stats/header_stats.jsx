@@ -4,16 +4,23 @@ import React from "react";
 
 // import CardStats from "components/Cards/CardStats.js";
 
-export default function HeaderStats() {
+export default function HeaderStats({
+	heading = "Welcome to HemoCell",
+	subheading = "Admin Dashboard",
+}) {
 	return (
 		<>
 			{/* Header */}
-			<div className="relative bg-dark_red md:pt-32 pb-32 pt-12">
+			<div className=" bg-dark_red md:pt-32 pb-32 pt-12">
 				<div className="px-4 md:px-10 mx-auto w-full">
 					<div>
 						{/* Card stats */}
-						<h2 className="text-white font-bold text-[50px]">Welcome to HemoCell</h2>
-						<h3 className="text-off_white tracking-[10px] font-medium text-[20px] uppercase">Admin Dashboard</h3>
+						<h2 className="text-white font-bold text-[50px]">
+							{heading}
+						</h2>
+						<h3 className="text-off_white tracking-[10px] font-medium text-[20px] uppercase">
+							{subheading}
+						</h3>
 						<div className="flex flex-wrap">
 							{/* <div className="w-full lg:w-6/12 xl:w-3/12 px-4"> */}
 							{/* <CardStats

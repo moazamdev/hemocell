@@ -1,5 +1,13 @@
+import HeaderStats from "../../sections/header-stats/header_stats";
+
+
 const Dashboard = () => {
-	return <h2>Dashboard</h2>;
+	return (
+		<>
+			<HeaderStats />
+			<h2>Dashboard</h2>
+		</>
+	);
 };
 
 export default Dashboard;

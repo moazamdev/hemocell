@@ -17,14 +17,14 @@ export default function Admin() {
 	return (
 		<>
 			<Sidebar />
-			<div className="relative md:ml-64 bg-blueGray-100">
+			<div className="relative md:ml-64 bg-off_white outline h-screen">
 				{/* <AdminNavbar /> */}
 				{/* Header */}
-				<HeaderStats />
-				<div className="px-4 bg-off_white md:px-10 mx-auto w-full">
+				{/* <HeaderStats /> */}
+				<div className="bg-off_white mx-auto w-full h-full">
 					<Routes>
 						<Route
-							path="dashboard"
+							path="/"
                             exact
 							element={<Dashboard />}
 						/>
@@ -51,7 +51,7 @@ export default function Admin() {
 						<Route
 							path="/redirect"
                     
-							element={<Navigate to="/admin/dashboard" />}
+							element={<Navigate to="/" />}
 						/>
 						{/* <Navigate from="/admin" to="/admin/dashboard" /> */}
 					</Routes>
