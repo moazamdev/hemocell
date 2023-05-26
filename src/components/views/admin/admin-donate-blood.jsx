@@ -19,9 +19,9 @@ export default function AdminDonateBlood() {
 			});
 	}, []);
 
-	const handleOptionChange = (event) => {
-		setSelectedOpt(event.target.value);
-	};
+	// const handleOptionChange = (e) => {
+	// 	setSelectedOpt(e.target.value);
+	// };
 
 	const filterData = (search) => {
 		return data.filter((item) => {
@@ -33,15 +33,17 @@ export default function AdminDonateBlood() {
 			// 	matches = true;
 			// }
 
-			if (
+			if (selectedOpt === "all") {
+				return true;
+			} else if (
 				selectedOpt === "donated" &&
-				"no".toLowerCase().includes(search) &&
+				"no".toLowerCase().includes(search.toLowerCase()) &&
 				item.donated === 0
 			) {
 				matches = true;
 			} else if (
 				selectedOpt === "donated" &&
-				"yes".toLowerCase().includes(search) &&
+				"yes".toLowerCase().includes(search.toLowerCase()) &&
 				item.donated === 1
 			) {
 				matches = true;
@@ -59,38 +61,52 @@ export default function AdminDonateBlood() {
 		});
 	};
 
-	// const filterData = (search) => {
-	// 	return data.filter((item) => {
-	// 		let matches = true;
-
-	// 		for (const key of filterOptions) {
-	// 			if (typeof key === "string") {
-	// 				if (
-	// 					item[key]
-	// 						.toString()
-	// 						.toLowerCase()
-	// 						.includes(search.toLowerCase())
-	// 				) {
-	// 					matches = true;
-	// 				} else {
-	// 					matches = false;
-	// 				}
-	// 			} else {
-	// 				if (item[key] === search) {
-	// 					matches = true;
-	// 				} else {
-	// 					matches = false;
-	// 				}
-	// 			}
-	// 		}
-
-	// 		return matches;
-	// 	});
-	// };
-
-	const handleSearchChange = (event) => {
-		setFilter(event.target.value);
+	const handleSearchChange = (e) => {
+		setFilter(e.target.value);
 	};
+
+	const handleInputChange = (e) => {
+		setSelectedOpt(e.target.value);
+	};
+
+	const handleDonatedChange = (id) => {
+		const item = data.find((item) => item.id === id);
+		let status = !item.donated;
+
+		axios
+			.put(`http://localhost:3001/api/donate-blood/donated`, {
+				status,
+				id,
+			})
+			.then((response) => {
+				setData(
+					data.map((item) =>
+						item.id === id ? { ...item, donated: status } : item
+					)
+				);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
+
+	const optionsData = [
+		{ id: 1, name: "All", value: "all" },
+		{ id: 2, name: "Name", value: "name" },
+		{ id: 3, name: "Phone", value: "phone" },
+		{ id: 4, name: "Email", value: "email" },
+		{ id: 5, name: "Blood Type", value: "bloodType" },
+		{ id: 6, name: "Donated", value: "donated" },
+	];
+
+	const tableHeader = [
+		"Name",
+		"Email",
+		"Phone",
+		"Blood Type",
+		"Message",
+		"Donated",
+	];
 
 	return (
 		<>
@@ -112,194 +128,38 @@ export default function AdminDonateBlood() {
 					</div>
 					<div className="flex flex-row space-x-2">
 						<div className="flex flex-row space-x-2 mt-2">
-							<label className="inline-flex items-center">
-								<input
-									type="radio"
-									name="all"
-									checked={selectedOpt === ""}
-									className="ml-2 mr-2 border-2 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500"
-									onChange={(event) => setSelectedOpt("")}
-									// onChange={(event) => {
-									// 	if (event.target.checked) {
-									// 		setFilterOptions([
-									// 			...filterOptions,
-									// 			"all",
-									// 		]);
-									// 	} else {
-									// 		setFilterOptions(
-									// 			filterOptions.filter(
-									// 				(item) => item !== "all"
-									// 			)
-									// 		);
-									// 	}
-									// }}
-								/>
-								<span className="ml-2 mr-2 text-sm">All</span>
-							</label>
-							<label className="inline-flex items-center">
-								<input
-									type="radio"
-									name="filter"
-									value="name"
-									checked={selectedOpt === "name"}
-									className="ml-2 mr-2 border-2 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500"
-									onChange={(event) =>
-										setSelectedOpt(event.target.value)
-									}
-									// onChange={(event) => {
-									// 	if (event.target.checked) {
-									// 		setFilterOptions([
-									// 			...filterOptions,
-									// 			"name",
-									// 		]);
-									// 	} else {
-									// 		setFilterOptions(
-									// 			filterOptions.filter(
-									// 				(item) => item !== "name"
-									// 			)
-									// 		);
-									// 	}
-									// }}
-								/>
-								<span className="ml-2 mr-2 text-sm">Name</span>
-							</label>
-							<label className="inline-flex items-center">
-								<input
-									type="radio"
-									name="filter"
-									value="bloodType"
-									checked={selectedOpt === "bloodType"}
-									className="ml-2 mr-2 border-2 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500"
-									onChange={(event) =>
-										setSelectedOpt(event.target.value)
-									}
-									// onChange={(event) => {
-									// 	if (event.target.checked) {
-									// 		setFilterOptions([
-									// 			...filterOptions,
-									// 			"bloodType",
-									// 		]);
-									// 	} else {
-									// 		setFilterOptions(
-									// 			filterOptions.filter(
-									// 				(item) =>
-									// 					item !== "bloodType"
-									// 			)
-									// 		);
-									// 	}
-									// }}
-								/>
-								<span className="ml-2 mr-2 text-sm">
-									Blood Type
-								</span>
-							</label>
-							<label className="inline-flex items-center">
-								<input
-									type="radio"
-									name="filter"
-									value="email"
-									checked={selectedOpt === "email"}
-									className="ml-2 mr-2 border-2 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500"
-									onChange={(event) =>
-										setSelectedOpt(event.target.value)
-									}
-									// onChange={(event) => {
-									// 	if (event.target.checked) {
-									// 		setFilterOptions([
-									// 			...filterOptions,
-									// 			"email",
-									// 		]);
-									// 	} else {
-									// 		setFilterOptions(
-									// 			filterOptions.filter(
-									// 				(item) => item !== "email"
-									// 			)
-									// 		);
-									// 	}
-									// }}
-								/>
-								<span className="ml-2 mr-2 text-sm">Email</span>
-							</label>
-							<label className="inline-flex items-center">
-								<input
-									type="radio"
-									name="filter"
-									value="phone"
-									checked={selectedOpt === "phone"}
-									className="ml-2 mr-2 border-2 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500"
-									onChange={(event) =>
-										setSelectedOpt(event.target.value)
-									}
-									// onChange={(event) => {
-									// 	if (event.target.checked) {
-									// 		setFilterOptions([
-									// 			...filterOptions,
-									// 			"phone",
-									// 		]);
-									// 	} else {
-									// 		setFilterOptions(
-									// 			filterOptions.filter(
-									// 				(item) => item !== "phone"
-									// 			)
-									// 		);
-									// 	}
-									// }}
-								/>
-								<span className="ml-2 mr-2 text-sm">Phone</span>
-							</label>
-							<label className="inline-flex items-center">
-								<input
-									type="radio"
-									name="filter"
-									value="donated"
-									checked={selectedOpt === "donated"}
-									className="ml-2 mr-2 border-2 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500"
-									onChange={(event) =>
-										setSelectedOpt(event.target.value)
-									}
-									// onChange={(event) => {
-									// 	if (event.target.checked) {
-									// 		setFilterOptions([
-									// 			...filterOptions,
-									// 			"donated",
-									// 		]);
-									// 	} else {
-									// 		setFilterOptions(
-									// 			filterOptions.filter(
-									// 				(item) => item !== "donated"
-									// 			)
-									// 		);
-									// 	}
-									// }}
-								/>
-								<span className="ml-2 mr-2 text-sm">
-									Donated
-								</span>
-							</label>
+							{optionsData.map((item) => (
+								<label
+									className="inline-flex items-center"
+									key={item.id}
+								>
+									<input
+										type="radio"
+										name={item.value}
+										value={item.value}
+										checked={selectedOpt === item.value}
+										className="ml-2 mr-2 border-2 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500"
+										onChange={handleInputChange}
+									/>
+									<span className="ml-2 mr-2 text-sm">
+										{item.name}
+									</span>
+								</label>
+							))}
 						</div>
 					</div>
 				</div>
 				<table className="mt-10 shadow-lg bg-white w-full">
 					<thead className="bg-dark p-4 text-off_white font-normal border border-dark">
 						<tr>
-							<th className="px-4 py-4 font-normal text-start">
-								Name
-							</th>
-							<th className="px-4 py-4 font-normal text-start">
-								Email
-							</th>
-							<th className="px-4 py-4 font-normal text-start">
-								Phone
-							</th>
-							<th className="px-4 py-4 font-normal text-start">
-								Blood Type
-							</th>
-							<th className="px-4 py-4 font-normal text-start">
-								Message
-							</th>
-							<th className="px-4 py-4 font-normal text-start">
-								Donated
-							</th>
+							{tableHeader.map((item) => (
+								<th
+									className="px-4 py-4 font-normal text-start"
+									key={item}
+								>
+									{item}
+								</th>
+							))}
 						</tr>
 					</thead>
 					<tbody>
@@ -324,7 +184,18 @@ export default function AdminDonateBlood() {
 									{item.message}
 								</td>
 								<td className="border border-[#ddd] px-4 py-2">
-									{item.donated ? "Yes" : "No"}
+									<label className="cursor-pointer">
+										<input
+											type="checkbox"
+											name="donated_checkbox"
+											onChange={() =>
+												handleDonatedChange(item.id)
+											}
+											checked={item.donated && true}
+										/>
+										{` `}
+										{item.donated ? "Yes" : "No"}
+									</label>
 								</td>
 							</tr>
 						))}
