@@ -16,6 +16,7 @@ export default {
 			white: "#FFFFFF",
 			gray: "#999999",
 			dark_gray: "#444444",
+			green: "rgb(20 83 45)",
 		},
 		borderRadius: {
 			full: "999px",

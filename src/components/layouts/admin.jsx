@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 import Sidebar from "../sidebar/sidebar";
-import HeaderStats from "../sections/header-stats/header_stats";
-import AdminNavbar from "../sections/admin-navbar/admin-navbar";
+// import HeaderStats from "../sections/header-stats/header_stats";
+// import AdminNavbar from "../sections/admin-navbar/admin-navbar";
 
 import Dashboard from "../views/admin/dashboard";
 import AdminDonateBlood from "../views/admin/admin-donate-blood";
@@ -11,49 +11,38 @@ import AdminNeedBlood from "../views/admin/admin-need-blood";
 import AdminHostBloodDrive from "../views/admin/admin-host-blood-drive";
 import AdminNeedHelp from "../views/admin/admin-need-help";
 
-// views
-
 export default function Admin() {
 	return (
 		<>
 			<Sidebar />
-			<div className="relative md:ml-64 bg-off_white outline h-screen">
+			<div className="relative md:ml-64 bg-off_white outline">
 				{/* <AdminNavbar /> */}
 				{/* Header */}
 				{/* <HeaderStats /> */}
 				<div className="bg-off_white mx-auto w-full h-full">
 					<Routes>
-						<Route
-							path="/"
-                            exact
-							element={<Dashboard />}
-						/>
+						<Route path="/" exact element={<Dashboard />} />
 						<Route
 							path="donate-blood"
-                            exact
+							exact
 							element={<AdminDonateBlood />}
-                            />
+						/>
 						<Route
 							path="need-blood"
-                            exact
+							exact
 							element={<AdminNeedBlood />}
-                            />
+						/>
 						<Route
 							path="host-blood-drive"
-                            exact
+							exact
 							element={<AdminHostBloodDrive />}
-                            />
+						/>
 						<Route
 							path="need-help"
-                            exact
+							exact
 							element={<AdminNeedHelp />}
-                            />
-						<Route
-							path="/redirect"
-                    
-							element={<Navigate to="/" />}
 						/>
-						{/* <Navigate from="/admin" to="/admin/dashboard" /> */}
+						<Route path="/redirect" element={<Navigate to="/" />} />
 					</Routes>
 					{/* <FooterAdmin /> */}
 				</div>
@@ -61,5 +50,3 @@ export default function Admin() {
 		</>
 	);
 }
-
-// Help me write the code so that when the user goes to the specific route, the element is rendered in the main section of the admin layout.
