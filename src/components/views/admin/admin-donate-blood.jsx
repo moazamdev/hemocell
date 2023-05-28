@@ -82,6 +82,21 @@ export default function AdminDonateBlood() {
 			});
 	};
 
+	const handleEdit = (id) => {
+		
+	};
+
+	const handleDelete = (id) => {
+		axios
+			.delete(`http://localhost:3001/api/donate-blood/delete/${id}`)
+			.then((response) => {
+				setData(data.filter((item) => item.id !== id));
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
+
 	const optionsData = [
 		{ id: 1, name: "All", value: "all" },
 		{ id: 2, name: "Name", value: "name" },
@@ -98,6 +113,7 @@ export default function AdminDonateBlood() {
 		"Blood Type",
 		"Message",
 		"Donated",
+		"Actions",
 	];
 
 	return (
@@ -119,6 +135,8 @@ export default function AdminDonateBlood() {
 						filter={filter}
 						handleCheckboxChange={handleDonatedChange}
 						type={"donate-blood"}
+						handleEdit={handleEdit}
+						handleDelete={handleDelete}
 					/>
 				</div>
 			</div>
