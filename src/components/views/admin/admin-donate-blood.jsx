@@ -82,9 +82,7 @@ export default function AdminDonateBlood() {
 			});
 	};
 
-	const handleEdit = (id) => {
-		
-	};
+	const handleEdit = (id) => {};
 
 	const handleDelete = (id) => {
 		axios
@@ -130,6 +128,7 @@ export default function AdminDonateBlood() {
 
 				<div className="overflow-x-scroll">
 					<DisplayTableComponent
+						data={data}
 						tableHeader={tableHeader}
 						filterData={filterData}
 						filter={filter}

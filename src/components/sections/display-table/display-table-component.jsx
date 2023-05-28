@@ -1,12 +1,36 @@
+import { useEffect, useState } from "react";
 const DisplayTableComponent = ({
 	tableHeader,
 	filterData,
+	data,
 	filter,
 	handleCheckboxChange,
 	type,
 	handleEdit,
 	handleDelete,
 }) => {
+	const [status, setStatus] = useState("normal");
+	const [selectedId, setSelectedId] = useState(null);
+	const [formName, setFormName] = useState("");
+
+	useEffect(() => {
+		data.map((item) => {
+			if (item.id == selectedId) {
+				setFormName(item.name);
+			}
+		});
+	}, [selectedId]);
+
+	// useEffect(() => {
+	// 	if (status == "done") {
+	// 		setSelectedId(null);
+	// 	}
+
+	// 	if (status == "pending") {
+	// 		setFormName("");
+	// 	}
+	// }, [status]);
+
 	const tableDataClasses = "border border-[#ddd] px-4 py-4";
 
 	return (
@@ -35,7 +59,21 @@ const DisplayTableComponent = ({
 							`bg-[#eee]`
 						}`}
 					>
-						<td className={tableDataClasses}>{item.name}</td>
+						<td className={tableDataClasses}>
+							{status == "editing" && selectedId == item.id ? (
+								<input
+									type="text"
+									className="border border-[#999] px-4 py-2 w-full bg-[#e0e0e0]"
+									value={formName}
+									onChange={(e) => {
+										e.preventDefault();
+										setFormName(e.target.value);
+									}}
+								/>
+							) : (
+								item.name
+							)}
+						</td>
 						<td className={tableDataClasses}>
 							<a href={`mailto:${item.email}`} target="_blank">
 								{item.email}
@@ -152,13 +190,33 @@ const DisplayTableComponent = ({
 						<td
 							className={`${tableDataClasses} flex flex-row gap-5`}
 						>
-							<a
-								href=""
-								onClick={() => handleEdit(item.id)}
-								className="text-green text-[25px]"
-							>
-								✎
-							</a>
+							{status == "editing" && item.id == selectedId ? (
+								<a
+									href=""
+									onClick={(e) => {
+										e.preventDefault();
+										setSelectedId(null);
+										setStatus("normal");
+										// handleEdit(item.id);
+									}}
+									className="text-green text-[25px]"
+								>
+									✔
+								</a>
+							) : (
+								<a
+									href=""
+									onClick={(e) => {
+										e.preventDefault();
+										setSelectedId(item.id);
+										setStatus("editing");
+										// handleEdit(item.id);
+									}}
+									className="text-green text-[25px]"
+								>
+									✎
+								</a>
+							)}
 							<a
 								href=""
 								onClick={() => handleDelete(item.id)}
