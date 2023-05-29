@@ -9,17 +9,39 @@ export default function AdminDonateBlood() {
 	const [filter, setFilter] = useState("");
 	const [selectedOpt, setSelectedOpt] = useState("name");
 
+	const [status, setStatus] = useState("normal");
+	const [selectedId, setSelectedId] = useState(null);
+	const [updatedData, setUpdatedData] = useState({
+		name: "",
+		phone: "",
+		bloodType: "",
+		message: "",
+	});
+
 	useEffect(() => {
 		axios
 			.get("http://localhost:3001/api/donate-blood")
 			.then((response) => {
 				setData(response.data);
-				console.log(response.data);
 			})
 			.catch((error) => {
 				console.error(error);
 			});
 	}, []);
+
+	useEffect(() => {
+		data.map((item) => {
+			if (item.id == selectedId) {
+				setUpdatedData({
+					name: item.name,
+					phone: item.phone,
+					bloodType: item.bloodType,
+					message: item.message,
+				});
+				// console.log("useEffect");
+			}
+		});
+	}, [selectedId]);
 
 	const filterData = (search) => {
 		return data.filter((item) => {
@@ -82,13 +104,36 @@ export default function AdminDonateBlood() {
 			});
 	};
 
-	const handleEdit = (id) => {};
-
 	const handleDelete = (id) => {
 		axios
 			.delete(`http://localhost:3001/api/donate-blood/delete/${id}`)
 			.then((response) => {
 				setData(data.filter((item) => item.id !== id));
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
+
+	const handleUpdateClick = (id) => {
+		axios
+			.put(`http://localhost:3001/api/donate-blood/update/${id}`, {
+				updatedData,
+			})
+			.then((response) => {
+				setData(
+					data.map((item) =>
+						item.id === id
+							? {
+									...item,
+									name: updatedData.name,
+									phone: updatedData.phone,
+									bloodType: updatedData.bloodType,
+									message: updatedData.message,
+							  }
+							: item
+					)
+				);
 			})
 			.catch((error) => {
 				console.error(error);
@@ -128,14 +173,20 @@ export default function AdminDonateBlood() {
 
 				<div className="overflow-x-scroll">
 					<DisplayTableComponent
-						data={data}
 						tableHeader={tableHeader}
 						filterData={filterData}
 						filter={filter}
 						handleCheckboxChange={handleDonatedChange}
 						type={"donate-blood"}
-						handleEdit={handleEdit}
+						handleUpdateClick={handleUpdateClick}
 						handleDelete={handleDelete}
+						status={status}
+						setStatus={setStatus}
+						selectedId={selectedId}
+						setSelectedId={setSelectedId}
+						updatedData={updatedData}
+						setUpdatedData={setUpdatedData}
+
 					/>
 				</div>
 			</div>

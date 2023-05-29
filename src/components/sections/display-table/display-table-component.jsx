@@ -1,36 +1,20 @@
-import { useEffect, useState } from "react";
+import InputRenderingBlock from "../../utility-functions/input-rendering-block";
+
 const DisplayTableComponent = ({
 	tableHeader,
 	filterData,
-	data,
 	filter,
 	handleCheckboxChange,
 	type,
-	handleEdit,
+	handleUpdateClick,
 	handleDelete,
+	status,
+	selectedId,
+	setStatus,
+	setSelectedId,
+	updatedData,
+	setUpdatedData,
 }) => {
-	const [status, setStatus] = useState("normal");
-	const [selectedId, setSelectedId] = useState(null);
-	const [formName, setFormName] = useState("");
-
-	useEffect(() => {
-		data.map((item) => {
-			if (item.id == selectedId) {
-				setFormName(item.name);
-			}
-		});
-	}, [selectedId]);
-
-	// useEffect(() => {
-	// 	if (status == "done") {
-	// 		setSelectedId(null);
-	// 	}
-
-	// 	if (status == "pending") {
-	// 		setFormName("");
-	// 	}
-	// }, [status]);
-
 	const tableDataClasses = "border border-[#ddd] px-4 py-4";
 
 	return (
@@ -47,6 +31,7 @@ const DisplayTableComponent = ({
 					))}
 				</tr>
 			</thead>
+
 			<tbody>
 				{filterData(filter).map((item) => (
 					<tr
@@ -60,48 +45,113 @@ const DisplayTableComponent = ({
 						}`}
 					>
 						<td className={tableDataClasses}>
-							{status == "editing" && selectedId == item.id ? (
-								<input
-									type="text"
-									className="border border-[#999] px-4 py-2 w-full bg-[#e0e0e0]"
-									value={formName}
-									onChange={(e) => {
-										e.preventDefault();
-										setFormName(e.target.value);
-									}}
-								/>
-							) : (
-								item.name
-							)}
+							<InputRenderingBlock
+								inputType="name"
+								itemId={item.id}
+								itemType={item.name}
+								status={status}
+								selectedId={selectedId}
+								updatedData={updatedData}
+								setUpdatedData={setUpdatedData}
+							/>
 						</td>
+
 						<td className={tableDataClasses}>
 							<a href={`mailto:${item.email}`} target="_blank">
 								{item.email}
 							</a>
 						</td>
-						<td className={tableDataClasses}>{item.phone}</td>
+
+						<td className={tableDataClasses}>
+							<InputRenderingBlock
+								inputType="phone"
+								itemId={item.id}
+								itemType={item.phone}
+								status={status}
+								selectedId={selectedId}
+								updatedData={updatedData}
+								setUpdatedData={setUpdatedData}
+							/>
+						</td>
+
 						{(type == "need-blood" || type == "donate-blood") && (
 							<td className={tableDataClasses}>
-								{item.bloodType}
+								<InputRenderingBlock
+									inputType="bloodType"
+									itemId={item.id}
+									itemType={item.bloodType}
+									status={status}
+									selectedId={selectedId}
+									updatedData={updatedData}
+									setUpdatedData={setUpdatedData}
+								/>
 							</td>
 						)}
 						{type === "host-blood-drive" && (
 							<>
 								<td className={tableDataClasses}>
-									{item.institute}
+									<InputRenderingBlock
+										inputType="institute"
+										itemId={item.id}
+										itemType={item.institute}
+										status={status}
+										selectedId={selectedId}
+										updatedData={updatedData}
+										setUpdatedData={setUpdatedData}
+									/>
 								</td>
 								<td className={tableDataClasses}>
-									{item.designation}
+									<InputRenderingBlock
+										inputType="designation"
+										itemId={item.id}
+										itemType={item.designation}
+										status={status}
+										selectedId={selectedId}
+										updatedData={updatedData}
+										setUpdatedData={setUpdatedData}
+									/>
 								</td>
 								<td className={tableDataClasses}>
-									{item.city}
+									<InputRenderingBlock
+										inputType="city"
+										itemId={item.id}
+										itemType={item.city}
+										status={status}
+										selectedId={selectedId}
+										updatedData={updatedData}
+										setUpdatedData={setUpdatedData}
+									/>
 								</td>
 							</>
 						)}
+
+						{/* MESSAGE OR REASON */}
 						{type === "need-help" && (
-							<td className={tableDataClasses}>{item.reason}</td>
+							<td className={tableDataClasses}>
+								<InputRenderingBlock
+									inputType="reason"
+									itemId={item.id}
+									itemType={item.reason}
+									status={status}
+									selectedId={selectedId}
+									updatedData={updatedData}
+									setUpdatedData={setUpdatedData}
+								/>
+							</td>
 						)}
-						<td className={tableDataClasses}>{item.message}</td>
+						<td className={tableDataClasses}>
+							<InputRenderingBlock
+								inputType="message"
+								itemId={item.id}
+								itemType={item.message}
+								status={status}
+								selectedId={selectedId}
+								updatedData={updatedData}
+								setUpdatedData={setUpdatedData}
+							/>
+						</td>
+
+						{/* CHECKBOXES */}
 						<td className={tableDataClasses}>
 							{type === "donate-blood" && (
 								<label
@@ -197,7 +247,7 @@ const DisplayTableComponent = ({
 										e.preventDefault();
 										setSelectedId(null);
 										setStatus("normal");
-										// handleEdit(item.id);
+										handleUpdateClick(item.id);
 									}}
 									className="text-green text-[25px]"
 								>
@@ -210,7 +260,6 @@ const DisplayTableComponent = ({
 										e.preventDefault();
 										setSelectedId(item.id);
 										setStatus("editing");
-										// handleEdit(item.id);
 									}}
 									className="text-green text-[25px]"
 								>

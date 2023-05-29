@@ -9,17 +9,39 @@ export default function AdminNeedBlood() {
 	const [filter, setFilter] = useState("");
 	const [selectedOpt, setSelectedOpt] = useState("name");
 
+	const [status, setStatus] = useState("normal");
+	const [selectedId, setSelectedId] = useState(null);
+	const [updatedData, setUpdatedData] = useState({
+		name: "",
+		phone: "",
+		bloodType: "",
+		message: "",
+	});
+
 	useEffect(() => {
 		axios
 			.get("http://localhost:3001/api/need-blood")
 			.then((response) => {
 				setData(response.data);
-				console.log(response.data);
 			})
 			.catch((error) => {
 				console.error(error);
 			});
 	}, []);
+
+	useEffect(() => {
+		data.map((item) => {
+			if (item.id == selectedId) {
+				setUpdatedData({
+					name: item.name,
+					phone: item.phone,
+					bloodType: item.bloodType,
+					message: item.message,
+				});
+				// console.log("useEffect");
+			}
+		});
+	}, [selectedId]);
 
 	const filterData = (search) => {
 		return data.filter((item) => {
@@ -82,6 +104,42 @@ export default function AdminNeedBlood() {
 			});
 	};
 
+	const handleDelete = (id) => {
+		axios
+			.delete(`http://localhost:3001/api/need-blood/delete/${id}`)
+			.then((response) => {
+				setData(data.filter((item) => item.id !== id));
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
+
+	const handleUpdateClick = (id) => {
+		axios
+			.put(`http://localhost:3001/api/need-blood/update/${id}`, {
+				updatedData,
+			})
+			.then((response) => {
+				setData(
+					data.map((item) =>
+						item.id === id
+							? {
+									...item,
+									name: updatedData.name,
+									phone: updatedData.phone,
+									bloodType: updatedData.bloodType,
+									message: updatedData.message,
+							  }
+							: item
+					)
+				);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
+
 	const optionsData = [
 		{ id: 1, name: "All", value: "all" },
 		{ id: 2, name: "Name", value: "name" },
@@ -98,6 +156,7 @@ export default function AdminNeedBlood() {
 		"Blood Type",
 		"Message",
 		"Given",
+		"Action",
 	];
 
 	return (
@@ -118,7 +177,15 @@ export default function AdminNeedBlood() {
 						filterData={filterData}
 						filter={filter}
 						handleCheckboxChange={handleGivenChange}
-            type={"need-blood"}
+						type={"need-blood"}
+						handleUpdateClick={handleUpdateClick}
+						handleDelete={handleDelete}
+						status={status}
+						setStatus={setStatus}
+						selectedId={selectedId}
+						setSelectedId={setSelectedId}
+						updatedData={updatedData}
+						setUpdatedData={setUpdatedData}
 					/>
 				</div>
 			</div>
