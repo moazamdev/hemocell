@@ -1,3 +1,5 @@
+import { RxCrossCircled } from "react-icons/rx";
+import { HiPencil } from "react-icons/hi";
 import InputRenderingBlock from "../../utility-functions/input-rendering-block";
 
 const DisplayTableComponent = ({
@@ -14,6 +16,7 @@ const DisplayTableComponent = ({
 	setSelectedId,
 	updatedData,
 	setUpdatedData,
+	editing = true,
 }) => {
 	const tableDataClasses = "border border-[#ddd] px-4 py-4";
 
@@ -87,6 +90,23 @@ const DisplayTableComponent = ({
 								/>
 							</td>
 						)}
+						{type == "new-users" && (
+							<>
+								<td className={tableDataClasses}>
+									<InputRenderingBlock
+										itemType={item.date}
+										editing={editing}
+									/>
+								</td>
+
+								<td className={tableDataClasses}>
+									<InputRenderingBlock
+										itemType={item.source}
+										editing={editing}
+									/>
+								</td>
+							</>
+						)}
 						{type === "host-blood-drive" && (
 							<>
 								<td className={tableDataClasses}>
@@ -126,6 +146,7 @@ const DisplayTableComponent = ({
 						)}
 
 						{/* MESSAGE OR REASON */}
+
 						{type === "need-help" && (
 							<td className={tableDataClasses}>
 								<InputRenderingBlock
@@ -139,139 +160,146 @@ const DisplayTableComponent = ({
 								/>
 							</td>
 						)}
-						<td className={tableDataClasses}>
-							<InputRenderingBlock
-								inputType="message"
-								itemId={item.id}
-								itemType={item.message}
-								status={status}
-								selectedId={selectedId}
-								updatedData={updatedData}
-								setUpdatedData={setUpdatedData}
-							/>
-						</td>
+						{type !== "new-users" && (
+							<td className={tableDataClasses}>
+								<InputRenderingBlock
+									inputType="message"
+									itemId={item.id}
+									itemType={item.message}
+									status={status}
+									selectedId={selectedId}
+									updatedData={updatedData}
+									setUpdatedData={setUpdatedData}
+								/>
+							</td>
+						)}
 
 						{/* CHECKBOXES */}
-						<td className={tableDataClasses}>
-							{type === "donate-blood" && (
-								<label
-									className={`cursor-pointer font-semibold ${
-										item.donated == true
-											? "text-green"
-											: "text-red"
-									}`}
-								>
-									<input
-										type="checkbox"
-										name="checkbox"
-										onChange={() =>
-											handleCheckboxChange(item.id)
-										}
-										checked={item.donated && true}
-									/>
-									{` `}
-									{item.donated ? "Yes" : "No"}
-								</label>
-							)}
+						{type !== "new-users" && (
+							<td className={tableDataClasses}>
+								{type === "donate-blood" && (
+									<label
+										className={`cursor-pointer font-semibold ${
+											item.donated == true
+												? "text-green"
+												: "text-red"
+										}`}
+									>
+										<input
+											type="checkbox"
+											name="checkbox"
+											onChange={() =>
+												handleCheckboxChange(item.id)
+											}
+											checked={item.donated && true}
+										/>
+										{` `}
+										{item.donated ? "Yes" : "No"}
+									</label>
+								)}
 
-							{type === "need-blood" && (
-								<label
-									className={`cursor-pointer font-semibold ${
-										item.given == true
-											? "text-green"
-											: "text-red"
-									}`}
-								>
-									<input
-										type="checkbox"
-										name="checkbox"
-										onChange={() =>
-											handleCheckboxChange(item.id)
-										}
-										checked={item.given && true}
-									/>
-									{` `}
-									{item.given ? "Yes" : "No"}
-								</label>
-							)}
+								{type === "need-blood" && (
+									<label
+										className={`cursor-pointer font-semibold ${
+											item.given == true
+												? "text-green"
+												: "text-red"
+										}`}
+									>
+										<input
+											type="checkbox"
+											name="checkbox"
+											onChange={() =>
+												handleCheckboxChange(item.id)
+											}
+											checked={item.given && true}
+										/>
+										{` `}
+										{item.given ? "Yes" : "No"}
+									</label>
+								)}
 
-							{type === "host-blood-drive" && (
-								<label
-									className={`cursor-pointer font-semibold ${
-										item.done == true
-											? "text-green"
-											: "text-red"
-									}`}
-								>
-									<input
-										type="checkbox"
-										name="checkbox"
-										onChange={() =>
-											handleCheckboxChange(item.id)
-										}
-										checked={item.done && true}
-									/>
-									{` `}
-									{item.done ? "Yes" : "No"}
-								</label>
-							)}
+								{type === "host-blood-drive" && (
+									<label
+										className={`cursor-pointer font-semibold ${
+											item.done == true
+												? "text-green"
+												: "text-red"
+										}`}
+									>
+										<input
+											type="checkbox"
+											name="checkbox"
+											onChange={() =>
+												handleCheckboxChange(item.id)
+											}
+											checked={item.done && true}
+										/>
+										{` `}
+										{item.done ? "Yes" : "No"}
+									</label>
+								)}
 
-							{type === "need-help" && (
-								<label
-									className={`cursor-pointer font-semibold ${
-										item.answered == true
-											? "text-green"
-											: "text-red"
-									}`}
-								>
-									<input
-										type="checkbox"
-										name="checkbox"
-										onChange={() =>
-											handleCheckboxChange(item.id)
-										}
-										checked={item.answered && true}
-									/>
-									{` `}
-									{item.answered ? "Yes" : "No"}
-								</label>
-							)}
-						</td>
+								{type === "need-help" && (
+									<label
+										className={`cursor-pointer font-semibold ${
+											item.answered == true
+												? "text-green"
+												: "text-red"
+										}`}
+									>
+										<input
+											type="checkbox"
+											name="checkbox"
+											onChange={() =>
+												handleCheckboxChange(item.id)
+											}
+											checked={item.answered && true}
+										/>
+										{` `}
+										{item.answered ? "Yes" : "No"}
+									</label>
+								)}
+							</td>
+						)}
 						<td
 							className={`${tableDataClasses} flex flex-row gap-5`}
 						>
-							{status == "editing" && item.id == selectedId ? (
-								<a
-									href=""
-									onClick={(e) => {
-										e.preventDefault();
-										setSelectedId(null);
-										setStatus("normal");
-										handleUpdateClick(item.id);
-									}}
-									className="text-green text-[25px]"
-								>
-									✔
-								</a>
-							) : (
-								<a
-									href=""
-									onClick={(e) => {
-										e.preventDefault();
-										setSelectedId(item.id);
-										setStatus("editing");
-									}}
-									className="text-green text-[25px]"
-								>
-									✎
-								</a>
-							)}
+							{editing &&
+								(status == "editing" &&
+								item.id == selectedId ? (
+									<a
+										href=""
+										onClick={(e) => {
+											e.preventDefault();
+											setSelectedId(null);
+											setStatus("normal");
+											handleUpdateClick(item.id);
+										}}
+										className="text-green text-[25px]"
+									>
+										✔
+									</a>
+								) : (
+									<a
+										href=""
+										onClick={(e) => {
+											e.preventDefault();
+											setSelectedId(item.id);
+											setStatus("editing");
+										}}
+										className="text-green text-[25px]"
+									>
+										<HiPencil />
+									</a>
+								))}
+
 							<a
 								href=""
 								onClick={() => handleDelete(item.id)}
 								className="text-red text-[25px]"
 							>
-								⨷
+								<RxCrossCircled />
 							</a>
 						</td>
 					</tr>

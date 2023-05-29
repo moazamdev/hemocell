@@ -6,8 +6,9 @@ const InputRenderingBlock = ({
 	selectedId,
 	updatedData,
 	setUpdatedData,
+	editing = true,
 }) => {
-	return status === "editing" && selectedId === itemId ? (
+	return editing && status === "editing" && selectedId === itemId ? (
 		<input
 			type="text"
 			className="border border-[#999] px-4 py-2 w-full bg-[#e0e0e0]"
