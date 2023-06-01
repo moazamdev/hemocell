@@ -10,6 +10,8 @@ import HeaderComponent from "../../sections/header/header-component";
 import BeforeFooterCTA from "../../sections/before-footer-cta/before-footer-cta-components";
 import FooterComponent from "../../sections/footer/footer-component";
 
+import newUsersInsertRequest from "../../utility-functions/new-users-insert-request";
+
 import Axios from "axios";
 
 const DonateBloodPage = () => {
@@ -45,6 +47,8 @@ const DonateBloodPage = () => {
 			.catch((error) => {
 				console.log(error);
 			});
+
+		newUsersInsertRequest(formData, "donate-blood");
 
 		setFormData({
 			name: "",

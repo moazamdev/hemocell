@@ -9,6 +9,7 @@ import BeforeFooterCTA from "../../sections/before-footer-cta/before-footer-cta-
 import FooterComponent from "../../sections/footer/footer-component";
 
 import Axios from "axios";
+import newUsersInsertRequest from "../../utility-functions/new-users-insert-request";
 
 const HostBloodDrivePage = () => {
 	const [formData, setFormData] = useState({
@@ -42,6 +43,8 @@ const HostBloodDrivePage = () => {
 			.catch((error) => {
 				console.log(error);
 			});
+
+		newUsersInsertRequest(formData, "host-blood-drive");
 
 		setFormData({
 			name: "",

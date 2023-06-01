@@ -17,6 +17,10 @@
 	--sm_br: 4px;
 }
 
+hr
+{
+  color: #c2c2c2;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

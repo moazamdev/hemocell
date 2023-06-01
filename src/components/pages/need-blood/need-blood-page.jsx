@@ -10,6 +10,7 @@ import BeforeFooterCTA from "../../sections/before-footer-cta/before-footer-cta-
 import FooterComponent from "../../sections/footer/footer-component";
 
 import Axios from "axios";
+import newUsersInsertRequest from "../../utility-functions/new-users-insert-request";
 
 const NeedBloodPage = () => {
 	const [formData, setFormData] = useState({
@@ -39,6 +40,8 @@ const NeedBloodPage = () => {
 			.catch((error) => {
 				console.log(error);
 			});
+
+		newUsersInsertRequest(formData, "need-blood");
 
 		setFormData({
 			name: "",

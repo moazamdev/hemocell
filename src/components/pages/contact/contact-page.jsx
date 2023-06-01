@@ -10,6 +10,7 @@ import Axios from "axios";
 
 import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import newUsersInsertRequest from "../../utility-functions/new-users-insert-request";
 
 const ContactPage = () => {
 	const [formData, setFormData] = useState({
@@ -39,6 +40,8 @@ const ContactPage = () => {
 			.catch((error) => {
 				console.log(error);
 			});
+
+		newUsersInsertRequest(formData, "need-help");
 
 		setFormData({
 			name: "",

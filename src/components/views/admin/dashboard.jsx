@@ -7,7 +7,6 @@ import axios from "axios";
 import { BiDonateBlood, BiHelpCircle } from "react-icons/bi";
 import { MdOutlineBloodtype } from "react-icons/md";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
-import { RxCrossCircled } from "react-icons/rx";
 import CardLineChart from "../../sections/chart/chart-component";
 import FilterableComponent from "../../sections/filterable/filterable-component";
 import DisplayTableComponent from "../../sections/display-table/display-table-component";
@@ -120,31 +119,6 @@ const Dashboard = () => {
 			});
 	};
 
-	// const handleUpdateClick = (id) => {
-	// 	axios
-	// 		.put(`http://localhost:3001/api/donate-blood/update/${id}`, {
-	// 			updatedData,
-	// 		})
-	// 		.then((response) => {
-	// 			setData(
-	// 				data.map((item) =>
-	// 					item.id === id
-	// 						? {
-	// 								...item,
-	// 								name: updatedData.name,
-	// 								phone: updatedData.phone,
-	// 								bloodType: updatedData.bloodType,
-	// 								message: updatedData.message,
-	// 						  }
-	// 						: item
-	// 				)
-	// 			);
-	// 		})
-	// 		.catch((error) => {
-	// 			console.error(error);
-	// 		});
-	// };
-
 	const optionsData = [
 		{ id: 1, name: "All", value: "all" },
 		{ id: 2, name: "Name", value: "name" },
@@ -204,45 +178,6 @@ const Dashboard = () => {
 						editing={false}
 					/>
 				</div>
-
-				{/* <div>
-					<div className="flex flex-col mt-5">
-						<table>
-							<thead>
-								<tr>
-									<td>Name</td>
-									<td>Phone</td>
-									<td>Email</td>
-									<td>Date</td>
-									<td>Source</td>
-									<td>Action</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr className="bg-off_white">
-									<td className="px-6 py-4 rounded-rmd">
-										John Doe
-									</td>
-									<td className="px-6 py-4 rounded-rmd">
-										123456789
-									</td>
-									<td className="px-6 py-4 rounded-rmd">
-										john@mail.com
-									</td>
-									<td className="px-6 py-4 rounded-rmd">
-										2023-05-06
-									</td>
-									<td className="px-6 py-4 rounded-rmd">
-										Need Blood
-									</td>
-									<td className="px-6 py-4 rounded-rmd">
-										<RxCrossCircled />
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div> */}
 			</div>
 		</>
 	);
