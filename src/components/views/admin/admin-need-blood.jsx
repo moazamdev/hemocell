@@ -3,6 +3,7 @@ import axios from "axios";
 import HeaderStats from "../../sections/header-stats/header_stats";
 import DisplayTableComponent from "../../sections/display-table/display-table-component";
 import FilterableComponent from "../../sections/filterable/filterable-component";
+import InitialDataFetching from "../../utility-functions/initial-data-fetching";
 
 export default function AdminNeedBlood() {
 	const [data, setData] = useState([]);
@@ -19,15 +20,19 @@ export default function AdminNeedBlood() {
 	});
 
 	useEffect(() => {
-		axios
-			.get("http://localhost:3001/api/need-blood")
-			.then((response) => {
-				setData(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
+		InitialDataFetching({ source: "need-blood", setData });
 	}, []);
+
+	// useEffect(() => {
+	// 	axios
+	// 		.get("http://localhost:3001/api/need-blood")
+	// 		.then((response) => {
+	// 			setData(response.data);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error(error);
+	// 		});
+	// }, []);
 
 	useEffect(() => {
 		data.map((item) => {

@@ -27,7 +27,7 @@ const DisplayTableComponent = ({
 				<tr>
 					{tableHeader.map((item) => (
 						<th
-							className="px-4 py-4 font-normal text-[14px] text-start uppercase tracking-[.3em]"
+							className="px-4 py-4 font-normal text-[14px] text-start uppercase tracking-[.3em] border-rmd"
 							key={item}
 						>
 							{item}
@@ -45,6 +45,7 @@ const DisplayTableComponent = ({
 								(item.donated ||
 									item.given ||
 									item.answered ||
+									item.checked ||
 									item.done) &&
 								`bg-[#eee]`
 							}`}
@@ -104,6 +105,7 @@ const DisplayTableComponent = ({
 												0,
 												10
 											)}
+											// itemType={item.date}
 											editing={editing}
 										/>
 									</td>
@@ -336,6 +338,26 @@ const DisplayTableComponent = ({
 								>
 									<RxCrossCircled />
 								</a>
+								{type === "new-users" && (
+									<label
+										className={`cursor-pointer font-semibold ${
+											item.checked == true
+												? "text-green"
+												: "text-red"
+										}`}
+									>
+										<input
+											type="checkbox"
+											name="checkbox"
+											onChange={() =>
+												handleCheckboxChange(item.id)
+											}
+											checked={item.checked && true}
+										/>
+										{` `}
+										{item.checked ? "Yes" : "No"}
+									</label>
+								)}
 							</td>
 						</tr>
 					))

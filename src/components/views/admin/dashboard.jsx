@@ -10,6 +10,7 @@ import { MdOutlineVolunteerActivism } from "react-icons/md";
 import CardLineChart from "../../sections/chart/chart-component";
 import FilterableComponent from "../../sections/filterable/filterable-component";
 import DisplayTableComponent from "../../sections/display-table/display-table-component";
+import InitialDataFetching from "../../utility-functions/initial-data-fetching";
 
 const Dashboard = () => {
 	const [data, setData] = useState([]);
@@ -17,15 +18,19 @@ const Dashboard = () => {
 	const [selectedOpt, setSelectedOpt] = useState("name");
 
 	useEffect(() => {
-		axios
-			.get("http://localhost:3001/api/dashboard")
-			.then((response) => {
-				setData(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
+		InitialDataFetching({ source: "dashboard", setData });
 	}, []);
+
+	// useEffect(() => {
+	// 	axios
+	// 		.get("http://localhost:3001/api/dashboard")
+	// 		.then((response) => {
+	// 			setData(response.data);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error(error);
+	// 		});
+	// }, []);
 
 	const handleSearchChange = (e) => {
 		setFilter(e.target.value);
@@ -80,21 +85,19 @@ const Dashboard = () => {
 
 			if (selectedOpt === "all") {
 				return true;
-			}
-			// else if (
-			// 	selectedOpt === "donated" &&
-			// 	"no".toLowerCase().includes(search.toLowerCase()) &&
-			// 	item.donated === 0
-			// ) {
-			// 	matches = true;
-			// } else if (
-			// 	selectedOpt === "donated" &&
-			// 	"yes".toLowerCase().includes(search.toLowerCase()) &&
-			// 	item.donated === 1
-			// ) {
-			// 	matches = true;
-			// }
-			else if (
+			} else if (
+				selectedOpt === "checked" &&
+				"no".toLowerCase().includes(search.toLowerCase()) &&
+				item.checked === 0
+			) {
+				matches = true;
+			} else if (
+				selectedOpt === "checked" &&
+				"yes".toLowerCase().includes(search.toLowerCase()) &&
+				item.checked === 1
+			) {
+				matches = true;
+			} else if (
 				item[selectedOpt]
 					.toString()
 					.toLowerCase()
@@ -106,6 +109,27 @@ const Dashboard = () => {
 			}
 			return matches;
 		});
+	};
+
+	const handleCheckedChange = (id) => {
+		const item = data.find((item) => item.id === id);
+		let status = !item.checked;
+
+		axios
+			.put(`http://localhost:3001/api/new-users/checked`, {
+				status,
+				id,
+			})
+			.then((response) => {
+				setData(
+					data.map((item) =>
+						item.id === id ? { ...item, checked: status } : item
+					)
+				);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
 	};
 
 	const handleDelete = (id) => {
@@ -175,6 +199,7 @@ const Dashboard = () => {
 						filter={filter}
 						type={"new-users"}
 						handleDelete={handleDelete}
+						handleCheckboxChange={handleCheckedChange}
 						editing={false}
 					/>
 				</div>

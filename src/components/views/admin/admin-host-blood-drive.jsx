@@ -3,6 +3,7 @@ import axios from "axios";
 import HeaderStats from "../../sections/header-stats/header_stats";
 import DisplayTableComponent from "../../sections/display-table/display-table-component";
 import FilterableComponent from "../../sections/filterable/filterable-component";
+import InitialDataFetching from "../../utility-functions/initial-data-fetching";
 
 export default function AdminHostBloodDrive() {
 	const [data, setData] = useState([]);
@@ -21,15 +22,19 @@ export default function AdminHostBloodDrive() {
 	});
 
 	useEffect(() => {
-		axios
-			.get("http://localhost:3001/api/host-blood-drive")
-			.then((response) => {
-				setData(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
+		InitialDataFetching({ source: "host-blood-drive", setData });
 	}, []);
+
+	// useEffect(() => {
+	// 	axios
+	// 		.get("http://localhost:3001/api/host-blood-drive")
+	// 		.then((response) => {
+	// 			setData(response.data);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error(error);
+	// 		});
+	// }, []);
 
 	useEffect(() => {
 		data.map((item) => {

@@ -23,7 +23,7 @@ const newUsersInsertRequest = (formData, pageSource) => {
 			console.log(error);
 		});
 	console.log("success");
-	console.log(formData);
+	// console.log(formData);
 };
 
 export default newUsersInsertRequest;
