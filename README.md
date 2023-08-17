@@ -43,7 +43,7 @@ HemoCell addresses the following solutions:
 
 ## Developer
 
-HemoCell was developed by [Moazam Ali](https://www.linkedin.com/in/moazamdev/) (Moazam Ali)[https://www.linkedin.com/in/moazamdev/], a software engineer with experience in web development.
+HemoCell was developed by [Moazam Ali][https://www.linkedin.com/in/moazamdev/], a software engineer with experience in web development.
 
 ## Instructions to Run
 
