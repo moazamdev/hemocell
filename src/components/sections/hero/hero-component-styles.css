@@ -1,0 +1,66 @@
+.hero {
+  background: var(--dark) url("../../../assets/images/blood-donation(6).jpg") no-repeat center;
+}
+
+.home-page-hero {
+  background: var(--dark) url("../../../assets/images/blood-donation(6).jpg") no-repeat center;
+}
+
+.donate-blood-page-hero {
+  background: var(--dark) url("../../../assets/images/blood-donation(1).jpg") no-repeat center;
+}
+
+.host-blood-drive-page-hero {
+  background: var(--dark) url("../../../assets/images/blood-donation(2).jpg") no-repeat center;
+}
+
+.need-blood-page-hero {
+  background: var(--dark) url("../../../assets/images/blood-donation(3).jpg") no-repeat center;
+}
+
+.contact-page-hero {
+  background: var(--dark) url("../../../assets/images/blood-donation(4).jpg") no-repeat center;
+}
+
+.main-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+  background-size: cover;
+  position: relative;
+}
+.main-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--dark);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  margin: 0 auto;
+  width: min(100% - 20px, 1250px);
+}
+
+.main-container {
+  animation: fadeup 1s ease-in-out forwards;
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+@keyframes fadeup {
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}/*# sourceMappingURL=hero-component-styles.css.map */

@@ -1,0 +1,15 @@
+.form-wrapper {
+  background: linear-gradient(to right, var(--dark) 0%, var(--dark) 100%), url("../../../assets/images/black texturized hemocell blood bank.jpg") center/cover no-repeat;
+  background-blend-mode: multiply;
+  animation: fadeup 1s ease-in-out forwards;
+  animation-delay: 0.5s;
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+@keyframes fadeup {
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}/*# sourceMappingURL=form-component-styles.css.map */

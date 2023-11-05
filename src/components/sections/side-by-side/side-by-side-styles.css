@@ -1,0 +1,29 @@
+.side-col-image {
+  background: var(--dark) url("../../../assets/images/blood-donation(1).jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+.donate-blood-with-hemocell {
+  background: var(--dark) url("../../../assets/images/blood-donation(3).jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+.why-donate-blood {
+  background: var(--dark) url("../../../assets/images/blood-donation(2).jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+.hosting-blood-drive {
+  background: var(--dark) url("../../../assets/images/blood-donation(1).jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+.benefits-host-drive {
+  background: var(--dark) url("../../../assets/images/blood-donation(4).jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+}/*# sourceMappingURL=side-by-side-styles.css.map */
