@@ -12,8 +12,8 @@ const navigation = [
 	{ name: "Need Blood", href: "/need-blood", secondLast: true },
 	{ name: "Donate Blood", href: "/donate-blood", last: true },
 ];
-const logoUrl = "../src/assets/logos/HemoCell Logo black.png";
-const logoUrlWhite = "../src/assets/logos/HemoCell Logo White.png";
+const logoUrl = "../public/HemoCell Logo black.png";
+const logoUrlWhite = "../public/HemoCell Logo White.png";
 const compnayName = "HemoCell Blood Bank";
 
 const HeaderComponent = () => {
@@ -52,7 +52,7 @@ const HeaderComponent = () => {
 					<a href="/" className="-m-1.5 p-1.5">
 						<span className="sr-only">{compnayName}</span>
 						<img
-							className="h-10 w-auto"
+							className="w-auto h-10"
 							src={logoUrlWhite}
 							alt=""
 						/>
@@ -67,7 +67,7 @@ const HeaderComponent = () => {
 						onClick={() => setMobileMenuOpen(true)}
 					>
 						<span className="sr-only">Open main menu</span>
-						<Bars3Icon className="h-6 w-6" aria-hidden="true" />
+						<Bars3Icon className="w-6 h-6" aria-hidden="true" />
 					</button>
 				</div>
 
@@ -103,11 +103,11 @@ const HeaderComponent = () => {
 				onClose={setMobileMenuOpen}
 			>
 				<div className="fixed inset-0 z-50" />
-				<Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+				<Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full px-6 py-6 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
 					<div className="flex items-center justify-between">
 						<a href="/" className="-m-1.5 p-1.5">
 							<span className="sr-only">{compnayName}</span>
-							<img className="h-12 w-auto" src={logoUrl} alt="" />
+							<img className="w-auto h-12" src={logoUrl} alt="" />
 						</a>
 						<button
 							type="button"
@@ -115,12 +115,12 @@ const HeaderComponent = () => {
 							onClick={() => setMobileMenuOpen(false)}
 						>
 							<span className="sr-only">Close menu</span>
-							<XMarkIcon className="h-6 w-6" aria-hidden="true" />
+							<XMarkIcon className="w-6 h-6" aria-hidden="true" />
 						</button>
 					</div>
-					<div className="mt-6 flow-root">
+					<div className="flow-root mt-6">
 						<div className="-my-6 divide-y divide-gray-500/10">
-							<div className="space-y-2 py-6">
+							<div className="py-6 space-y-2">
 								{navigation.map((item) => (
 									<NavLink
 										key={item.name}
