@@ -28,22 +28,13 @@ export default function App() {
 				<Route path="/contact" element={<ContactPage />} />
 				<Route path="/admin" element={<Admin />}>
 					<Route index element={<Dashboard />} />
-					<Route
-						path="donate-blood"
-						exact
-						element={<AdminDonateBlood />}
-					/>
-					<Route
-						path="need-blood"
-						exact
-						element={<AdminNeedBlood />}
-					/>
+					<Route path="donate-blood" element={<AdminDonateBlood />} />
+					<Route path="need-blood" element={<AdminNeedBlood />} />
 					<Route
 						path="host-blood-drive"
-						exact
 						element={<AdminHostBloodDrive />}
 					/>
-					<Route path="need-help" exact element={<AdminNeedHelp />} />
+					<Route path="need-help" element={<AdminNeedHelp />} />
 					{/* <Route path="/redirect" element={<Navigate to="/" />} /> */}
 				</Route>
 			</Routes>
