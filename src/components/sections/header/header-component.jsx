@@ -4,6 +4,9 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
 
+import BlackLogo from "../../../../public/HemoCell Logo black.png";
+import WhiteLogo from "../../../../public/HemoCell Logo White.png";
+
 const navigation = [
 	{ name: "Home", href: "/" },
 	{ name: "Host Blood Drive", href: "/host-blood-drive" },
@@ -12,8 +15,8 @@ const navigation = [
 	{ name: "Need Blood", href: "/need-blood", secondLast: true },
 	{ name: "Donate Blood", href: "/donate-blood", last: true },
 ];
-const logoUrl = "../public/HemoCell Logo black.png";
-const logoUrlWhite = "../public/HemoCell Logo White.png";
+// const logoUrl = "../public/HemoCell Logo black.png";
+// const logoUrlWhite = "../public/HemoCell Logo White.png";
 const compnayName = "HemoCell Blood Bank";
 
 const HeaderComponent = () => {
@@ -51,11 +54,7 @@ const HeaderComponent = () => {
 				<div className="flex lg:flex-1">
 					<a href="/" className="-m-1.5 p-1.5">
 						<span className="sr-only">{compnayName}</span>
-						<img
-							className="w-auto h-10"
-							src={logoUrlWhite}
-							alt=""
-						/>
+						<img className="w-auto h-10" src={WhiteLogo} alt="" />
 					</a>
 				</div>
 
@@ -107,7 +106,11 @@ const HeaderComponent = () => {
 					<div className="flex items-center justify-between">
 						<a href="/" className="-m-1.5 p-1.5">
 							<span className="sr-only">{compnayName}</span>
-							<img className="w-auto h-12" src={logoUrl} alt="" />
+							<img
+								className="w-auto h-12"
+								src={BlackLogo}
+								alt=""
+							/>
 						</a>
 						<button
 							type="button"
