@@ -28,6 +28,10 @@ const FooterComponent = () => {
 			title: "Contact",
 			link: "/contact",
 		},
+		{
+			title: "Admin Dashboard",
+			link: "/admin",
+		},
 	];
 
 	const contactLinks = [
@@ -53,7 +57,7 @@ const FooterComponent = () => {
 		<section className="footer two-cta-wrapper flex flex-col justify-center items-center w-full mx-auto my-0 px-2.5 pt-[70px] pb-[40px] bg-dark">
 			<div className="two-cta-container relative w-[min(100%_-_15px,1250px)]  mx-auto my-0 p-2.5">
 				<div className="first-section-wrapper grid sm:grid-cols-[1.5fr_1fr_1fr] gap-10">
-					<div className="footer-col first-col flex flex-col">
+					<div className="flex flex-col footer-col first-col">
 						<h2 className="not-italic font-bold text-[40px] leading-[55px] text-white">
 							Hemo<span className="text-[red]">Cell</span>
 						</h2>
